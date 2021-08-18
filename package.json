@@ -14,6 +14,7 @@
     "babel-loader": "^8.2.2",
     "babel-plugin-jsx-control-statements": "^4.1.0",
     "css-loader": "^5.2.4",
+    "file-loader": "^6.2.0",
     "jsx-control-statements": "^3.2.8",
     "mini-css-extract-plugin": "^1.5.0",
     "path": "^0.12.7",
