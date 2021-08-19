@@ -10,10 +10,13 @@ class Home extends React.Component{
     render() {
         return(
             <>
+                <div>
               <Header/>
+                </div>
+                <div>
                 <h2>faltante</h2>
               <Footer/>
-
+                </div>
             </>
         )
     }
