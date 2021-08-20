@@ -23,8 +23,8 @@ render(){
                                 </button>
                                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
                                     <ul className="navbar-nav me-auto mb-2 mb-lg-0" >
-                                        <form className="d-flex">
-                                            <input className="input1" type="search" placeholder="Search" aria-label="Search"/>
+                                        <form className="d-flex ">
+                                            <input className="" type="search" placeholder="Search" aria-label="Search"/>
 
                                         </form>
                                         <li className="nav-item dropdown">

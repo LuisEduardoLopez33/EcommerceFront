@@ -82,13 +82,13 @@ class Footer extends React.Component{
 
                     <div>
                         <a href="" className="me-4 text-reset">
-                            <img src={visa} width="20" height="10"/>
+                            <img src={visa} width="40" height="20"/>
                         </a>
                         <a href="" className="me-4 text-reset">
-                            <img src={mastercard}  width="20" height="10"/>
+                            <img src={mastercard}  width="40" height="20"/>
                         </a>
                         <a href="" className="me-4 text-reset">
-                            <img src={paypal}  width="20" height="10"/>
+                            <img src={paypal}  width="40" height="20"/>
                         </a>
                     </div>
 
