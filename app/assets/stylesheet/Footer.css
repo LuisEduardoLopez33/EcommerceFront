@@ -3,3 +3,49 @@
  position: absolute;
  left: 200px;
 }
+/* se aplican al login y singUp*/
+a{
+ color: black;
+}
+p{
+ color: gray;
+}
+
+.footer{
+ background-color: black;
+ text-align: center;
+
+}
+.contenedor{
+ border: 2px #E1E0E0 solid;
+ margin: 0% auto;
+ width: 90%;
+ height: auto;
+}
+.contenedor-sing{
+ border: 2px #E1E0E0 solid;
+ margin: 0% auto;
+ width: 90%;
+ height: auto;
+}
+.input{
+ border: 1.5px #E1E0E0 solid;
+}
+.btn_login{
+ padding: 3%;
+}
+.container-mensaje{
+ display: grid;
+ justify-content: right;
+ grid-template-columns: 90% ;
+}
+.mensaje{
+ border: 1.5px #E1E0E0 solid;
+ margin: 70px auto;
+}
+.uno{
+ display: grid;
+ grid-template-columns: 50% 50% ;
+ justify-items: center;
+
+}
