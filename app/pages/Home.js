@@ -3,10 +3,10 @@ import React from 'react'
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import Card from "../components/cardProductBeta";
-import img1 from "../assets/img/800_800_F4B08AE864B230306F27DB61747B438539D82EF121556B2Bmp.png";
-import img2 from "../assets/img/iphone-12-blue-select-2020.png";
-import img3 from "../assets/img/latin-galaxy-note20-ultra-n985-sm-n985fznkgto-frontmysticbronze-320814310.png";
-import img4 from "../assets/img/latin-galaxy-s21-5g-g991-sm-g991bzajtpa-368316714.png";
+import img1 from "../assets/img/motorola.png";
+import img2 from "../assets/img/Iphone12.png";
+import img3 from "../assets/img/Note.png";
+import img4 from "../assets/img/s21.png";
 
 import oferta from "../assets/img/Captura de pantalla 2021-08-20 125234.png";
 import oferta2 from "../assets/img/Captura de pantalla 2021-08-20 125346.png";
@@ -26,8 +26,8 @@ class Home extends React.Component{
             },
             {
                 imagen : img1,
-                nombre: "Huawei P40 pro",
-                precio: "$25,000"
+                nombre: "Motorola Moto G",
+                precio: "$8,182"
 
             },
             {
