@@ -13,10 +13,10 @@ render(){
                 <div className="container-fluid">
                     <div className="container">
                         <div className="row">
-                            <div className="col-lg-4">
-                                <a className="navbar-brand" href="#">Ecommerce</a>
+                            <div className="col-lg-5">
+                                <Link className="dropdown-item" to='/'>Ecommerce</Link>
                             </div>
-                            <div className="col-lg-8">
+                            <div className="col-lg-7">
                                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse"
                                         data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                                         aria-expanded="false" aria-label="Toggle navigation">

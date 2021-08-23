@@ -11,6 +11,7 @@ import img4 from "../assets/img/s21.png";
 import oferta from "../assets/img/Captura de pantalla 2021-08-20 125234.png";
 import oferta2 from "../assets/img/Captura de pantalla 2021-08-20 125346.png";
 import oferta3 from "../assets/img/Captura de pantalla 2021-08-20 125505.png";
+import {Link} from "react-router-dom";
 
 class Home extends React.Component{
     constructor(props) {
@@ -110,7 +111,9 @@ class Home extends React.Component{
                         </div>
                         <For each="item" index="index" of={this.state.productList} >
                             <div className="col-sm-6 col-md-2 col-lg-2">
+                                <Link className="dropdown-item" to='/ProductDetails' key={index} img ={item.imagen} title={item.nombre} description={item.precio}>
                                 <Card key={index} img ={item.imagen} title={item.nombre} description={item.precio} />
+                                </Link>
                             </div>
                         </For>
                         <div className="col-sm-6 col-md-2 col-lg-2">

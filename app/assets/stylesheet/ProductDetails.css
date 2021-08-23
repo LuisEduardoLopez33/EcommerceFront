@@ -1,0 +1,51 @@
+#circulo-grey{
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: grey;
+    align-items: center;
+    display: inline-block;
+    font-weight: bold;
+    line-height: 1.6em;
+    margin-right: 5px;
+
+}
+#circulo-grey-dark{
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: darkgray;
+    align-items: center;
+    display: inline-block;
+    font-weight: bold;
+    line-height: 1.6em;
+    margin-right: 5px;
+
+}
+#circulo-dark{
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: black;
+    align-items: center;
+    display: inline-block;
+    font-weight: bold;
+    line-height: 1.6em;
+    margin-right: 5px;
+}
+#circulo-whithe{
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: white;
+    align-items: center;
+    display: inline-block;
+    border-width: 2px;
+    line-height: 1.6em;
+    margin-right: 5px;
+
+}
+#buttons-align{
+    display: inline-block;
+    margin-right: 10px;
+}

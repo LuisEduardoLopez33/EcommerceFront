@@ -2,7 +2,7 @@ import React from 'react'
 
 class Cart extends React.Component{
 
-    constructor(props) {
+    constructor(p) {
         super(props);
     }
     render(){
@@ -18,11 +18,7 @@ class Cart extends React.Component{
                               <h5 className="card-title">{this.props.title}</h5>
                               <p className="card-text">{this.props.description}</p>
                               <p className="card-text">${this.props.precio}</p>
-
                               <div>
-                                  <button type="button" className="btn btn-dark" onClick={this.deleteCart.bind(this)}>
-                                      <p className="text-light">Eliminar </p>
-                                  </button>
                               </div>
                           </div>
                       </div>
@@ -32,9 +28,6 @@ class Cart extends React.Component{
       )
     }
 
-    deleteCart(e){
 
-
-    }
 }
 export  default Cart;
