@@ -4,7 +4,7 @@
  left: 200px;
 }
 /* se aplican al login y singUp*/
-a{
+div > a{
  color: black;
 }
 p{
