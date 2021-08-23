@@ -1,6 +1,6 @@
 import React from "react";
-
-
+import Header  from "../components/Header";
+import Footer from "../components/Footer";
 class Login extends React.Component{
     constructor(props) {
         super(props);
@@ -8,7 +8,9 @@ class Login extends React.Component{
     render() {
         return(
             <>
-
+               <div>
+                   <Header/>
+               </div>
 
                 <div className="container">
                     <div className="uno row m-5">
@@ -41,9 +43,9 @@ class Login extends React.Component{
                         <button className="btn btn-dark" type="submit">Iniciar sesión</button>
                     </div>
                 </div>
-
-
-
+                <div>
+                    <Footer/>
+                </div>
             </>
         )
     }

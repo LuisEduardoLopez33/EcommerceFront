@@ -106,11 +106,15 @@ class Home extends React.Component{
                 </div>
                     <br/>
                     <div className="row">
+                        <div className="col-sm-6 col-md-2 col-lg-2">
+                        </div>
                         <For each="item" index="index" of={this.state.productList} >
-                            <div className="col-sm-6 col-md-2 col-lg-3">
+                            <div className="col-sm-6 col-md-2 col-lg-2">
                                 <Card key={index} img ={item.imagen} title={item.nombre} description={item.precio} />
                             </div>
                         </For>
+                        <div className="col-sm-6 col-md-2 col-lg-2">
+                        </div>
                     </div>
                 <br/>
               <Footer/>

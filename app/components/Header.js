@@ -2,6 +2,7 @@ import React from 'react'
 
 import personaIcono from '../assets/icons/person_black_24dp.svg'
 import carritoIcono from '../assets/icons/shopping_cart_black_24dp.svg'
+import {Link} from "react-router-dom";
 
 
 class Header extends React.Component {
@@ -33,9 +34,14 @@ render(){
                                                 <img src={personaIcono}  alt="" width="30" height="24"/>
                                             </a>
                                             <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                                                <li><a className="dropdown-item" href="#">Login</a></li>
-                                                <li><a className="dropdown-item" href="#">Signup</a></li>
-
+                                                <li> <Link className="dropdown-item" to='/Login'>
+                                                    <h6>Login</h6>
+                                                </Link>
+                                                </li>
+                                                <li><Link className="dropdown-item" to='/Signup'>
+                                                    <h6>Signup</h6>
+                                                </Link>
+                                                </li>
                                             </ul>
                                         </li>
                                         <li className="nav-item">

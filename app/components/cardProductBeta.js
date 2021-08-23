@@ -9,7 +9,7 @@ class cardProductBeta extends React.Component{
         return(
             <React.Fragment>
                 <div className="row ">
-                    <div className="col" >
+                    <div className="col-12" >
                         <div className="card"  >
                             <img src={this.props.img}  className="card-img"  width="60" height="220"/>
                             <div className="card-body">
