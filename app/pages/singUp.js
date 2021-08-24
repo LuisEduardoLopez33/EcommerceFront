@@ -1,5 +1,6 @@
 import React from "react";
-
+import Header from "../components/Header";
+import Footer from "../components/Footer";
 class SingUp extends React.Component{
     constructor(props) {
         super(props);
@@ -7,6 +8,9 @@ class SingUp extends React.Component{
     render() {
         return(
             <>
+                <div>
+                    <Header/>
+                </div>
                 <div className="container">
                     <div className="uno row m-4 ">
                         <div className="col-md-4"><a className="navbar-brand" href="#">Mi cuenta</a></div>
@@ -53,8 +57,10 @@ class SingUp extends React.Component{
                             <button className="btn btn-dark" type="submit">Registrarse</button>
                         </div>
                     </div>
-
                 </div>
+              <div>
+                  <Footer/>
+              </div>
             </>
         )
     }

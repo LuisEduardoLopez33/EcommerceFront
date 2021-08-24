@@ -2,6 +2,7 @@ import React from 'react'
 
 import personaIcono from '../assets/icons/person_black_24dp.svg'
 import carritoIcono from '../assets/icons/shopping_cart_black_24dp.svg'
+import {Link} from "react-router-dom";
 
 
 class Header extends React.Component {
@@ -12,10 +13,10 @@ render(){
                 <div className="container-fluid">
                     <div className="container">
                         <div className="row">
-                            <div className="col-lg-4">
-                                <a className="navbar-brand" href="#">Ecommerce</a>
+                            <div className="col-lg-5">
+                                <Link className="dropdown-item" to='/'>Ecommerce</Link>
                             </div>
-                            <div className="col-lg-8">
+                            <div className="col-lg-7">
                                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse"
                                         data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                                         aria-expanded="false" aria-label="Toggle navigation">
@@ -33,9 +34,14 @@ render(){
                                                 <img src={personaIcono}  alt="" width="30" height="24"/>
                                             </a>
                                             <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                                                <li><a className="dropdown-item" href="#">Login</a></li>
-                                                <li><a className="dropdown-item" href="#">Signup</a></li>
-
+                                                <li> <Link className="dropdown-item" to='/Login'>
+                                                    <h6>Login</h6>
+                                                </Link>
+                                                </li>
+                                                <li><Link className="dropdown-item" to='/Signup'>
+                                                    <h6>Signup</h6>
+                                                </Link>
+                                                </li>
                                             </ul>
                                         </li>
                                         <li className="nav-item">
