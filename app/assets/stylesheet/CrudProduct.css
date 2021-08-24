@@ -1,0 +1,45 @@
+*{
+    box-sizing: border-box;
+}
+h3{
+    color: black;
+    text-align: center;
+    padding: 10px;
+}
+
+.content{
+    max-width: 1170px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 1.5em;
+}
+.container-form{
+    border: 2px #E1E0E0 solid;
+    margin: 0% auto;
+    height: auto;
+}
+.container-form form p{
+    margin: 0;
+    padding: 2em;
+}
+.container-form form{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+.container-form .block{
+    grid-column: 1 /3;
+}
+
+.container-form form input,
+.container-form form textarea{
+    width: 100%;
+    padding: .7em;
+    outline: 0;
+    border: 1px #E1E0E0 solid;
+}
+textarea{
+    height: 200px;
+}
+.container-button{
+    padding: 10px;
+}
