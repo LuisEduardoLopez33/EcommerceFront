@@ -101,7 +101,9 @@ class Home extends React.Component{
                         <div className="col">
                             <h2>Gran coleccion</h2>
                             <p>Aqui van alguna descripcion de las colleciones</p>
-                            <button type="button" className="btn btn-dark">Ver mas</button>
+                            <Link className="dropdown-item" to="/Catalogue">
+                                <button type="button" className="btn btn-dark">Ver mas</button>
+                            </Link>
                         </div>
                     </div>
                 </div>
@@ -111,7 +113,9 @@ class Home extends React.Component{
                         </div>
                         <For each="item" index="index" of={this.state.productList} >
                             <div className="col-sm-6 col-md-2 col-lg-2">
+                                <Link className="dropdown-item" to='/ProductDetails' >
                                 <Card key={index} img ={item.imagen} title={item.nombre} description={item.precio} />
+                                </Link>
                             </div>
                         </For>
                         <div className="col-sm-6 col-md-2 col-lg-2">
