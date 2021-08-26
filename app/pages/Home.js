@@ -7,7 +7,7 @@ import img1 from "../assets/img/motorola.png";
 import img2 from "../assets/img/Iphone12.png";
 import img3 from "../assets/img/Note.png";
 import img4 from "../assets/img/s21.png";
-
+import APIInvoker from "../utils/APIInvoker";
 import oferta from "../assets/img/Captura de pantalla 2021-08-20 125234.png";
 import oferta2 from "../assets/img/Captura de pantalla 2021-08-20 125346.png";
 import oferta3 from "../assets/img/Captura de pantalla 2021-08-20 125505.png";
@@ -16,38 +16,18 @@ import {Link} from "react-router-dom";
 class Home extends React.Component{
     constructor(props) {
         super(props);
-
-        this.state = {
-            productList:[
-            {
-               imagen : img2,
-                nombre: "Iphone 12 blue",
-               precio: "$20,500"
-
-            },
-            {
-                imagen : img1,
-                nombre: "Motorola Moto G",
-                precio: "$8,182"
-
-            },
-            {
-                imagen : img3,
-                nombre: "Samsung Galaxy Note 20 Ultra",
-                precio: "$22,000"
-
-            },
-            {
-                imagen : img4,
-                nombre: "Samsung Galaxy S21 Ultra 5g",
-                precio: "$20,500"
-
-            }
-
-        ]
-
+        this.state ={
+            ProductList:[],
         }
+
         this.status = false
+        //extraer el catalogo de productos de la base de datos
+        APIInvoker.invokeGET('/product/getProducts',data => {  //Entrará acá cuando status = true
+            this.setState({
+                ProductList : data.data
+            })
+        }, error => { //Entrará acá cuando status = false
+        })
     }
     render() {
         return(
@@ -101,21 +81,26 @@ class Home extends React.Component{
                         <div className="col">
                             <h2>Gran coleccion</h2>
                             <p>Aqui van alguna descripcion de las colleciones</p>
-                            <Link className="dropdown-item" to="/Catalogue">
-                                <button type="button" className="btn btn-dark">Ver mas</button>
-                            </Link>
+                            <button type="button" className="btn btn-dark">Ver mas</button>
                         </div>
                     </div>
                 </div>
                     <br/>
                     <div className="row">
+                        <div className="col-sm-6 col-md-4 col-lg-4">
+                        </div>
+                        <div className="col-sm-6 col-md-4 col-lg-4">
+                        <h2>Productos a gran precio</h2>
+                        </div>
+                        <div className="col-sm-6 col-md-4 col-lg-4">
+                        </div>
+                    </div>
+                    <div className="row">
                         <div className="col-sm-6 col-md-2 col-lg-2">
                         </div>
-                        <For each="item" index="index" of={this.state.productList} >
+                        <For each="item" index="index" of={this.state.ProductList} >
                             <div className="col-sm-6 col-md-2 col-lg-2">
-                                <Link className="dropdown-item" to='/ProductDetails' >
-                                <Card key={index} img ={item.imagen} title={item.nombre} description={item.precio} />
-                                </Link>
+                                <Card key={index} id ={item.id} title={item.name} description={item.price} />
                             </div>
                         </For>
                         <div className="col-sm-6 col-md-2 col-lg-2">

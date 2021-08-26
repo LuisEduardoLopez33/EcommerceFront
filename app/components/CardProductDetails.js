@@ -1,20 +1,23 @@
 import React from 'react'
 
 
-const cardProductDetails = (producto)=>{
-
-    return(
-        <React.Fragment>
-            <div className="row ">
-                <div className="col-12" >
-                    <div className="card"  >
-                        <img src={producto.imagen}  className="card-img"  width="60" height="220"/>
-                    </div>
-                </div>
-            </div>
-        </React.Fragment>
-    )
-
+class cardProductDetails extends React.Component{
+constructor(props) {
+    super(props);
+}
+   render() {
+       return (
+           <React.Fragment>
+               <div className="row ">
+                   <div className="col-12">
+                       <div className="card">
+                           <img src={"http://localhost:3000/" + this.props.img} className="card-img"/>
+                       </div>
+                   </div>
+               </div>
+           </React.Fragment>
+       )
+   }
 
 }
 export default cardProductDetails;

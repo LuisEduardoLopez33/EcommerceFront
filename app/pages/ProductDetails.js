@@ -3,25 +3,33 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import {Link} from "react-router-dom";
 import ProductCSS from "../assets/stylesheet/ProductDetails.css"
-import Cart from "../components/cart";
+import Card from "../components/CardProductDetails";
 import img2 from "../assets/img/Iphone12.png";
 import hours from "../assets/icons/24-horas.png"
 import paypal from "../assets/icons/paypal.png"
 import creditCard from '../assets/icons/credit_card_black_24dp.svg'
 import sale from '../assets/icons/sale.png'
 import box from '../assets/icons/inventory_2_black_24dp.svg'
+import APIInvoker from "../utils/APIInvoker";
 class productDetails extends React.Component{
     constructor(props) {
         super(props);
+        this.state={
+            Product:'',
+        }
+
+        this.status = false
+        APIInvoker.invokeGET(`/product/getImg/${this.props.location.state.id}`,data => {  //Entrará acá cuando status = true
+            this.setState({
+                Product : data.data
+            })
+        }, error => { //Entrará acá cuando status = false
+        })
 
     }
 
     render(){
-        const producto = {
-            imagen : img2,
-            nombre: "Iphone 12 blue",
-            precio: "$20,500"
-        }
+
         return(
             <div>
                 <Header/>
@@ -65,7 +73,8 @@ class productDetails extends React.Component{
                             </div>
                         </div>
                         <div className="col-lg-5" >
-                            <Cart  producto={producto}/>
+                            <h3>mando el id {this.props.location.state.id}</h3>
+                            <Card img={this.state.Product} />
                         </div>
                         <div className="col-lg-4">
                             <h6 className="fw-bold text-black">Nombre del producto</h6>
@@ -110,6 +119,9 @@ class productDetails extends React.Component{
 
             </div>
         )
+    }
+    addShoppingCart(e){
+
     }
 }
 export default productDetails;
