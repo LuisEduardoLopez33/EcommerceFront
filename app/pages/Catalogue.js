@@ -46,7 +46,7 @@ getProducts(e){
                             </div>
                         </div>
                         <div className="col-lg-9">
-                            Aqui puedes mandar a llamar las Cards
+                            Aqui puedes mandar a llamar las Cards gg
                         </div>
 
                     </div>
