@@ -2,7 +2,7 @@ import React from 'react'
 
 class Cart extends React.Component{
 
-    constructor(p) {
+    constructor(props) {
         super(props);
     }
     render(){

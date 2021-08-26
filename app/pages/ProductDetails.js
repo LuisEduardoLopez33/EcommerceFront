@@ -3,7 +3,7 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import {Link} from "react-router-dom";
 import ProductCSS from "../assets/stylesheet/ProductDetails.css"
-import Cart from "../components/cart";
+import Card from "../components/cardProductBeta";
 import img2 from "../assets/img/Iphone12.png";
 import hours from "../assets/icons/24-horas.png"
 import paypal from "../assets/icons/paypal.png"
@@ -65,7 +65,7 @@ class productDetails extends React.Component{
                             </div>
                         </div>
                         <div className="col-lg-5" >
-                            <Cart  producto={producto}/>
+                            <Card  img ={this.props.img} title={this.props.title} description={this.props.description}/>
                         </div>
                         <div className="col-lg-4">
                             <h6 className="fw-bold text-black">Nombre del producto</h6>
