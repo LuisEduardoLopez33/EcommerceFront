@@ -49,3 +49,11 @@
     display: inline-block;
     margin-right: 10px;
 }
+#CardProductSize{
+    width: 450px;
+
+}
+#CardProductImgSize{
+    width: 400px;
+    height: 450px;
+}

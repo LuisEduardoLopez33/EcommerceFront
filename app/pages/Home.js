@@ -88,7 +88,9 @@ class Home extends React.Component{
                         <div className="col">
                             <h2>Gran coleccion</h2>
                             <p>Aqui van alguna descripcion de las colleciones</p>
-                            <button type="button" className="btn btn-dark">Ver mas</button>
+                            <Link className="dropdown-item" to='/Catalogue'>
+                                <button type="button" className="btn btn-dark">Ver mas</button>
+                            </Link>
                         </div>
                     </div>
                 </div>
@@ -102,17 +104,21 @@ class Home extends React.Component{
                         <div className="col-sm-6 col-md-4 col-lg-4">
                         </div>
                     </div>
-                    <div className="row">
-                        <div className="col-sm-6 col-md-2 col-lg-2">
-                        </div>
-                        <For each="item" index="index" of={this.state.ProductList} >
-                            <div className="col-sm-6 col-md-2 col-lg-2">
-                                <Card key={index} id ={item.id} title={item.name} description={item.price} brand={item.brand} />
+                    <div className="container">
+                        <div className="row">
+                            <div className="col">
+                                <div className="row">
+                                    <For each="item" index="index" of={this.state.ProductList} >
+                                        <div className="col-lg-2">
+                                            <Card key={index} id ={item.id} title={item.name} description={item.price} brand={item.brand} />
+                                        </div>
+                                    </For>
+
+                                </div>
                             </div>
-                        </For>
-                        <div className="col-sm-6 col-md-2 col-lg-2">
                         </div>
                     </div>
+
                 <br/>
               <Footer/>
                 </div>
