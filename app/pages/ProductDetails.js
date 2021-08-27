@@ -15,11 +15,11 @@ class productDetails extends React.Component{
     constructor(props) {
         super(props);
         this.state={
-            Product:'',
+            Product:{},
         }
 
         this.status = false
-        APIInvoker.invokeGET(`/product/getImg/${this.props.location.state.id}`,data => {  //Entrará acá cuando status = true
+        APIInvoker.invokeGET(`/product/getProduct/${this.props.location.state.id}`,data => {  //Entrará acá cuando status = true
             this.setState({
                 Product : data.data
             })
@@ -73,12 +73,11 @@ class productDetails extends React.Component{
                             </div>
                         </div>
                         <div className="col-lg-5" >
-                            <h3>mando el id {this.props.location.state.id}</h3>
-                            <Card img={this.state.Product} />
+                            <Card id={this.props.location.state.id} />
                         </div>
                         <div className="col-lg-4">
-                            <h6 className="fw-bold text-black">Nombre del producto</h6>
-                            <p>$20500</p>
+                            <h6 className="fw-bold text-black">{this.state.Product.brand + "-"+this.state.Product.name + "-"+this.state.Product.model}</h6>
+                            <p>${this.state.Product.price}</p>
                             <div id="circulo-dark"></div>
                             <div id="circulo-grey"></div>
                             <div id="circulo-grey-dark"></div>

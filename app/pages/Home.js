@@ -18,6 +18,7 @@ class Home extends React.Component{
         super(props);
         this.state ={
             ProductList:[],
+            message:''
         }
 
         this.status = false
@@ -25,6 +26,12 @@ class Home extends React.Component{
         APIInvoker.invokeGET('/product/getProducts',data => {  //Entrará acá cuando status = true
             this.setState({
                 ProductList : data.data
+            })
+        }, error => { //Entrará acá cuando status = false
+        })
+        APIInvoker.invokeGET('/product/getImg',data => {  //Entrará acá cuando status = true
+            this.setState({
+                message : data.message
             })
         }, error => { //Entrará acá cuando status = false
         })
@@ -100,7 +107,7 @@ class Home extends React.Component{
                         </div>
                         <For each="item" index="index" of={this.state.ProductList} >
                             <div className="col-sm-6 col-md-2 col-lg-2">
-                                <Card key={index} id ={item.id} title={item.name} description={item.price} />
+                                <Card key={index} id ={item.id} title={item.name} description={item.price} brand={item.brand} />
                             </div>
                         </For>
                         <div className="col-sm-6 col-md-2 col-lg-2">

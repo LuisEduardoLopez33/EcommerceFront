@@ -11,7 +11,7 @@ constructor(props) {
                <div className="row ">
                    <div className="col-12">
                        <div className="card">
-                           <img src={"http://localhost:3000/" + this.props.img} className="card-img"/>
+                           <img src={"http://localhost:3000/"+this.props.id+'-ecommerce.png'}  className="card-img"  />
                        </div>
                    </div>
                </div>
