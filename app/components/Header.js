@@ -45,8 +45,13 @@ render(){
                                             </ul>
                                         </li>
                                         <li className="nav-item">
+                                            <Link className="dropdown-item" to ='/ShoppingCart'>
                                             <a className="nav-link disabled" href="#" tabIndex="-1"
-                                               aria-disabled="true"><img src={carritoIcono}  alt="" width="30" height="24"/></a>
+                                               aria-disabled="true">
+
+                                                <img src={carritoIcono}  alt="" width="30" height="24"/>
+                                            </a>
+                                            </Link>
                                         </li>
                                     </ul>
                                 </div>

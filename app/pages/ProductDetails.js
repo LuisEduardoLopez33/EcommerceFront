@@ -103,12 +103,12 @@ class productDetails extends React.Component{
                             </div>
                             <br/>
                             <br/>
-                            <button type="button" className="btn btn-dark" id="buttons-align">Añadir al carrito</button>
+                            <button type="button" className="btn btn-dark" id="buttons-align" onClick={this.addShoppingCart.bind(this)}>Añadir al carrito</button>
                             <button type="button" className="btn btn-dark"  id="buttons-align">Comprar</button>
                             <br/>
                             <br/>
                             <p>Detalles del producto</p>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum et pulvinar urna. </p>
+                            <p>{this.state.Product.description}</p>
 
                         </div>
                     </div>
@@ -120,6 +120,17 @@ class productDetails extends React.Component{
         )
     }
     addShoppingCart(e){
+        let cart={
+            product_id:this.props.location.state.id,
+            customer_id: 1,
+            amount:1,
+            subtotal:this.state.Product.price
+        }
+        APIInvoker.invokePOST('/cart/addCart',cart, data => {
+            alert(JSON.stringify(data))
+        }, error => {
+            alert(JSON.stringify(error))
+        })
 
     }
 }

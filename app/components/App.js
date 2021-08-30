@@ -5,6 +5,7 @@ import Signup from '../pages/singUp';
 import ProductDetails from '../pages/ProductDetails';
 import Catalogue from '../pages/Catalogue';
 import CrudProduct from "./CrudProduct";
+import shoppingCart from "../pages/shoppingCart";
 import {BrowserRouter, Switch, Route} from 'react-router-dom'
 class App extends React.Component{
     render() {
@@ -16,6 +17,7 @@ class App extends React.Component{
                     <Route exact path='/Signup' component={Signup}/>
                     <Route exact path='/ProductDetails' component={ProductDetails}/>
                     <Route exact path='/Catalogue' component={Catalogue}/>
+                    <Route exact path='/ShoppingCart' component={shoppingCart}/>
                     <Route exact path='/CrudProduct' component={CrudProduct}/>
                 </Switch>
             </BrowserRouter>
