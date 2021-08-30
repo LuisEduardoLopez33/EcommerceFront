@@ -1,36 +1,3 @@
-/*import React from "react";
-
-class CrudProduct extends React.Component{
-    constructor(props) {
-        super(props);
-    }
-     handleChange = (e) => {}
-
-     handleSubmit = (e) =>{}
-
-     handleReset = (e) => {}
-
-    render() {
-        return(
-            <>
-            <h3>Agregar productos</h3>
-               <form onSubmit={this.handleSubmit} >
-                   <input type="text" name="name" placeholder="Nombre" onChange={this.handleChange}/>
-                   <input type="text" name="model" placeholder="Modelo" onChange={this.handleChange}/>
-                   <input type="text" name="description" placeholder="Descripcion" onChange={this.handleChange}/>
-                   <input type="number" name="price" placeholder="Precio" onChange={this.handleChange}/>
-                   <input type="number" name="stock" placeholder="Cantidad" onChange={this.handleChange}/>
-                   <input type="number" name="size" placeholder="Tamaño" onChange={this.handleChange}/>
-                   <input type="text" name="color" placeholder="Color" onChange={this.handleChange}/>
-                   <input type="file" name="img" size="60" onChange={this.handleChange}/>
-
-               </form>
-            </>
-        )
-    }
-}
-export default CrudProduct;
-*/
 
 import React,{useState, useEffect}from "react";
 import  crudcss from "../assets/stylesheet/CrudProduct.css";
