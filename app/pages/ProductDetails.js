@@ -114,8 +114,32 @@ class productDetails extends React.Component{
                     </div>
                 </div>
                 <br/>
-                <Footer/>
+                <div className="container">
+                    <div className="row">
+                        <div className="col-lg-3">
 
+                        </div>
+                        <div className="col-lg-9">
+                            <h5>RESEÑAS</h5>
+                            <hr/>
+                            <br/>
+                            <p id="namesBlock">Nombre</p>
+                            <p id="namesBlock">Correo electronico</p>
+                            <br/>
+                            <input className="input" id="inputBlock"/>
+                            <input className="input" id="inputBlock"/>
+                            <p>Titulo de su reseña</p>
+                            <input className="input" id="inputReview"/>
+                            <p>Comentario</p>
+                            <textarea className="comments"></textarea>
+                            <br/>
+                            <button type="button" className="btn btn-dark"  id="buttons-align">Enviar</button>
+
+                        </div>
+                    </div>
+                </div>
+                <br/>
+                <Footer/>
             </div>
         )
     }
