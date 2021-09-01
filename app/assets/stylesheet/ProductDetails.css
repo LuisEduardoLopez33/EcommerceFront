@@ -57,22 +57,12 @@
     width: 400px;
     height: 450px;
 }
-#inputBlock{
-    display: inline-block;
-    align-items: center;
-    margin-right: 5px;
-    width: 400px;
-}
-#namesBlock{
-    display: inline-block;
-    align-items: center;
-    margin-right: 350px;
-}
+
 .comments{
     width: 805px;
     height: 100px;
 
 }
 #inputReview{
-    width: 805px;
+    width: 400px;
 }

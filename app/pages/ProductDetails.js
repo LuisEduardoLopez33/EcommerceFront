@@ -11,6 +11,7 @@ import creditCard from '../assets/icons/credit_card_black_24dp.svg'
 import sale from '../assets/icons/sale.png'
 import box from '../assets/icons/inventory_2_black_24dp.svg'
 import APIInvoker from "../utils/APIInvoker";
+import CardReview from "../components/CardReview";
 class productDetails extends React.Component{
     constructor(props) {
         super(props);
@@ -109,7 +110,6 @@ class productDetails extends React.Component{
                             <br/>
                             <p>Detalles del producto</p>
                             <p>{this.state.Product.description}</p>
-
                         </div>
                     </div>
                 </div>
@@ -117,23 +117,32 @@ class productDetails extends React.Component{
                 <div className="container">
                     <div className="row">
                         <div className="col-lg-3">
-
                         </div>
                         <div className="col-lg-9">
                             <h5>RESEÑAS</h5>
                             <hr/>
                             <br/>
-                            <p id="namesBlock">Nombre</p>
-                            <p id="namesBlock">Correo electronico</p>
-                            <br/>
-                            <input className="input" id="inputBlock"/>
-                            <input className="input" id="inputBlock"/>
                             <p>Titulo de su reseña</p>
                             <input className="input" id="inputReview"/>
                             <p>Comentario</p>
                             <textarea className="comments"></textarea>
                             <br/>
                             <button type="button" className="btn btn-dark"  id="buttons-align">Enviar</button>
+                        </div>
+                    </div>
+                    <br/>
+                    <div className="container">
+                        <div className="row">
+                            <div className="col-lg-3">
+                            </div>
+                            <div className="col-lg-9">
+                                <CardReview/>
+                                <CardReview/>
+                                <CardReview/>
+                                <CardReview/>
+                                <CardReview/>
+                                <CardReview/>
+                            </div>
 
                         </div>
                     </div>
