@@ -66,3 +66,11 @@
 #inputReview{
     width: 400px;
 }
+
+#Review{
+
+    width: 900px;
+    height: 200px;
+    overflow: hidden;
+
+}

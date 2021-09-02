@@ -136,12 +136,14 @@ class productDetails extends React.Component{
                             <div className="col-lg-3">
                             </div>
                             <div className="col-lg-9">
-                                <CardReview/>
-                                <CardReview/>
-                                <CardReview/>
-                                <CardReview/>
-                                <CardReview/>
-                                <CardReview/>
+                                <div className="overflow-auto" id="Review">
+                                    <CardReview/>
+                                    <CardReview/>
+                                    <CardReview/>
+                                    <CardReview/>
+                                    <CardReview/>
+                                    <CardReview/>
+                                </div>
                             </div>
 
                         </div>
