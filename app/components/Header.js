@@ -4,8 +4,25 @@ import personaIcono from '../assets/icons/person_black_24dp.svg'
 import carritoIcono from '../assets/icons/shopping_cart_black_24dp.svg'
 import {Link} from "react-router-dom";
 
+import update from 'immutability-helper';
 
 class Header extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            search: ''
+        }
+    }
+    changeField(e){
+        let field = e.target.name
+        let value = e.target.value
+
+        this.setState(update(this.state, {
+            [field] : {$set : value}
+        }))
+        
+    }
+
 render(){
     return(
         <header id="main-header">
@@ -25,7 +42,19 @@ render(){
                                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
                                     <ul className="navbar-nav me-auto mb-2 mb-lg-0" >
                                         <form className="d-flex ">
-                                            <input className="" type="search" placeholder="Search" aria-label="Search"/>
+                                            <input className="" type="search" placeholder="Search" aria-label="Search"
+                                                   name="search"
+                                                   id="search"
+                                                   value={this.state.search}
+                                                   onChange={this.changeField.bind(this)}/>
+                                            <Link to={{
+                                                pathname:'/Search',
+                                                state: {product: this.state.search}
+                                                } }>
+                                                <button className="btn btn-primary">
+                                                    enviar
+                                                </button>
+                                            </Link>
 
                                         </form>
                                         <li className="nav-item dropdown">
