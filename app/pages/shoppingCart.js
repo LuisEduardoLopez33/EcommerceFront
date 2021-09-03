@@ -58,6 +58,11 @@ class shoppingCart extends React.Component{
                                 </div>
                             </div>
                         </div>
+                        <div>
+                            <button type="button" className="btn btn-dark" onClick={this.deleteAllCart.bind(this)}>
+                                <p className="text-light">vaciar carrito </p>
+                            </button>
+                        </div>
                     </div>
                 <div>
                     <Footer/>
@@ -67,6 +72,17 @@ class shoppingCart extends React.Component{
         )
     }
 
+deleteAllCart(e){
+    let idCustomer = 1;
+    APIInvoker.invokeGET(`/cart/delByCustomerID/${idCustomer}`, data => {
+
+    }, error => {
+        alert(JSON.stringify(error))
+    })
+    window.location.href = window.location.href;
+
+
+}
 
 }
 export default shoppingCart;
