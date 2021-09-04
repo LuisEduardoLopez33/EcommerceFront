@@ -12,11 +12,16 @@ import sale from '../assets/icons/sale.png'
 import box from '../assets/icons/inventory_2_black_24dp.svg'
 import APIInvoker from "../utils/APIInvoker";
 import CardReview from "../components/CardReview";
+import update from "immutability-helper";
 class productDetails extends React.Component{
     constructor(props) {
         super(props);
+
         this.state={
             Product:{},
+            productReview:[],
+            title:'',
+            comment:''
         }
 
         this.status = false
@@ -27,6 +32,21 @@ class productDetails extends React.Component{
         }, error => { //Entrará acá cuando status = false
         })
 
+        APIInvoker.invokeGET(`/productReview/getRevs/${this.props.location.state.id}`,data => {  //Entrará acá cuando status = true
+            this.setState({
+                productReview : data.data
+            })
+        }, error => { //Entrará acá cuando status = false
+        })
+    }
+    changeField(e) {
+
+        let field = e.target.name
+        let value = e.target.value
+
+        this.setState(update(this.state, {
+            [field] : {$set : value}
+        }))
     }
 
     render(){
@@ -123,11 +143,20 @@ class productDetails extends React.Component{
                             <hr/>
                             <br/>
                             <p>Titulo de su reseña</p>
-                            <input className="input" id="inputReview"/>
+                            <input className="input" type="text"
+                                   name ="title"
+                                   id="title"
+                                   values={this.state.title}
+                                   onChange={this.changeField.bind(this)}
+                                       />
                             <p>Comentario</p>
-                            <textarea className="comments"></textarea>
+                            <textarea className="comments"
+                                      name ="comment"
+                                      id="comment"
+                                      values={this.state.comment}
+                                      onChange={this.changeField.bind(this)}/>
                             <br/>
-                            <button type="button" className="btn btn-dark"  id="buttons-align">Enviar</button>
+                            <button type="button" className="btn btn-dark"  id="buttons-align" onClick={this.addReview.bind(this)}>Enviar</button>
                         </div>
                     </div>
                     <br/>
@@ -137,12 +166,9 @@ class productDetails extends React.Component{
                             </div>
                             <div className="col-lg-9">
                                 <div className="overflow-auto" id="Review">
-                                    <CardReview/>
-                                    <CardReview/>
-                                    <CardReview/>
-                                    <CardReview/>
-                                    <CardReview/>
-                                    <CardReview/>
+                                    <For each="item" index="index" of={this.state.productReview} >
+                                            <CardReview key={index} id ={item.id} customer_email={item.customer_email} title={item.title} comment={item.comment} review_date={item.review_date}/>
+                                    </For>
                                 </div>
                             </div>
 
@@ -167,6 +193,21 @@ class productDetails extends React.Component{
             alert(JSON.stringify(error))
         })
 
+    }
+
+    addReview(e){
+        let product_review={
+            product_id:this.props.location.state.id,
+            customer_email: window.localStorage.getItem('nameCustomer'),
+            title:this.state.title,
+            comment:this.state.comment,
+            review_date:'2021-09-12'
+        }
+        APIInvoker.invokePOST('/productReview/addReview',product_review, data => {
+            alert(JSON.stringify(data))
+        }, error => {
+            alert(JSON.stringify(error))
+        })
     }
 }
 export default productDetails;

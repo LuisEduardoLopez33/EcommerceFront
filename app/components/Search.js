@@ -4,7 +4,7 @@ import React from 'react'
 import d from '../assets/stylesheet/Search.css';
 import Card from "./cardProductBeta";
 import update from 'immutability-helper';
-
+import Header from "./Header";
 
  const Search=(props)=>{
     const [producto, setProducto]= useState([]);
@@ -33,7 +33,7 @@ import update from 'immutability-helper';
    },[])
      useEffect(()=>{
          filtrar(busqueda);
-     })
+     },[])
 
 
 
@@ -52,12 +52,7 @@ import update from 'immutability-helper';
 
         return(
             <div>
-
                 <div className="App">
-                    <div className="containerInput">
-
-                    </div>
-
                     <div className="container">
                         <div className="row">
                             <div className="col">
