@@ -5,13 +5,21 @@ import carritoIcono from '../assets/icons/shopping_cart_black_24dp.svg'
 import {Link} from "react-router-dom";
 
 import update from 'immutability-helper';
+import APIInvoker from "../utils/APIInvoker";
 
 class Header extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            search: ''
+            search: '',
+            Products: []
         }
+        APIInvoker.invokeGET('/product/getProducts', data => {  //Entrará acá cuando status = true
+            this.setState({
+                Products: data.data
+            })
+        }, error => { //Entrará acá cuando status = false
+        })
     }
     changeField(e){
         let field = e.target.name
@@ -49,7 +57,8 @@ render(){
                                                    onChange={this.changeField.bind(this)}/>
                                             <Link to={{
                                                 pathname:'/Search',
-                                                state: {product: this.state.search}
+                                                state: {product: this.state.search,
+                                                listP: this.state.Products}
                                                 } }>
                                                 <button className="btn btn-primary">
                                                     enviar

@@ -3,6 +3,14 @@
     height: 250px;
 }
 #imageCard{
-
     height: 150px;
+}
+
+.embed-responsive .card-img-top {
+    object-fit: cover;
+}
+.card-img-top {
+    width: 100%;
+    height: 25vh;
+    object-fit: cover;
 }

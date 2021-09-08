@@ -15,6 +15,7 @@ class SingUp extends React.Component{
              date_of_bd:'',
              passwordConfirm:''
          }
+        this.status = false
     }
     changeField(e) {
 
@@ -24,6 +25,38 @@ class SingUp extends React.Component{
         this.setState(update(this.state, {
             [field] : {$set : value}
         }))
+    }
+
+    validateInputData(){
+        let estado = true;
+        if (this.state.name.length === 0) {
+            estado = false;
+        }
+        if (this.state.last_name.length === 0) {
+            estado = false;
+        }
+        if (this.state.phone.length === 0) {
+            estado = false;
+        }
+        if (this.state.mail.length === 0) {
+            estado = false;
+        }
+
+        if (this.state.password.length === 0) {
+            estado = false;
+        }
+        if (this.state.date_of_bd.length === 0) {
+            estado = false;
+        }
+        if (this.state.passwordConfirm.length === 0) {
+            estado = false;
+        }
+
+        if (estado === false)
+            this.status = false
+        else
+            this.status = true
+
     }
 
     render() {
@@ -113,22 +146,25 @@ class SingUp extends React.Component{
         )
     }
 
-    signUpCustomer(e){
-        let customer = {
-            name: this.state.name,
-            last_name: this.state.last_name,
-            password: this.state.password,
-            phone: this.state.phone,
-            mail: this.state.mail,
-            date_of_bd: this.state.date_of_bd
-        }
-        APIInvoker.invokePOST('/customers/signUp', customer, data => {
-            alert(JSON.stringify(data))
-        }, error => {
-            alert(JSON.stringify(error))
-        })
+    signUpCustomer(e) {
+        this.validateInputData()
+        if (this.status) {
+            let customer = {
+                name: this.state.name,
+                last_name: this.state.last_name,
+                password: this.state.password,
+                phone: this.state.phone,
+                mail: this.state.mail,
+                date_of_bd: this.state.date_of_bd
+            }
+            APIInvoker.invokePOST('/customers/signUp', customer, data => {
+                alert(JSON.stringify(data))
+            }, error => {
+                alert(JSON.stringify(error))
+            })
+        }else
+            alert("Es necesario llenar todos los campos");
     }
-
 }
 
 export default SingUp;
