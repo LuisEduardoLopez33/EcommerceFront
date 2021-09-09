@@ -10,6 +10,7 @@ import {BrowserRouter, Switch, Route} from 'react-router-dom'
 import Search from "./Search";
 import APIInvoker from "../utils/APIInvoker";
 import Card from "./cardProductBeta";
+import Address from "../pages/Address";
 class App extends React.Component{
     render() {
         return(
@@ -24,6 +25,7 @@ class App extends React.Component{
                     <Route exact path='/ShoppingCart' component={shoppingCart}/>
                     <Route exact path='/CrudProduct' component={CrudProduct}/>
                     <Route exact path='/Search' component={Search}/>
+                    <Route exact path='/Address' component={Address}/>
                 </Switch>
             </BrowserRouter>
         )
