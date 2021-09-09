@@ -85,6 +85,7 @@ class Login extends React.Component{
            alert(JSON.stringify(data))
             window.localStorage.setItem('token',data.token)
             window.localStorage.setItem('nameCustomer',data.name +" "+data.last_name)
+            window.localStorage.setItem('idCustomer',data.id)
 
         }, error => {
             alert(JSON.stringify(error))

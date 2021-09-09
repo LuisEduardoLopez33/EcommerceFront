@@ -1,39 +1,18 @@
 
-import React,{useState, useEffect}from "react";
-import  crudcss from "../assets/stylesheet/CrudProduct.css";
-
-const initialForm ={
-    name:"",
-    model:"",
-    description:"",
-    price:"",
-    stock:"",
-    size:"",
-    color:"",
-    img:""
-}
-
-const CrudProducts = () =>{
-    const [form, setForm] = useState(initialForm);
-
-   const handleChange = (e) => {
-       setForm({
-           ...form,
-           [e.target.name]:e.target.model,
-           [e.target.description]:e.target.price,
-           [e.target.stock]:e.target.size,
-           [e.target.color]:e.target.img
-       })
-   }
-
-   const handleSubmit = (e) =>{
-       e.preventDefault();
-   }
-
-   const handleReset = (e) => {}
+import React from "react";
 
 
-    return(
+
+
+class CrudProducts extends React.Component{
+
+    constructor(props) {
+        super(props);
+    }
+
+
+render () {
+    return (
         <>
             <div className="content">
                 <div className="row justify-content-between">
@@ -54,34 +33,34 @@ const CrudProducts = () =>{
                 </div>
 
                 <div className="container-form">
-                    <form onSubmit={handleSubmit} >
+                    <form onSubmit={handleSubmit}>
                         <p className="block">
                             <label>Nombre</label>
-                            <input type="text" name="name"  onChange={handleChange} value={form.name}/>
+                            <input type="text" name="name" onChange={handleChange} value={form.name}/>
                         </p>
                         <p>
                             <label>Modelo</label>
-                            <input type="text" name="model"  onChange={handleChange} value={form.model}/>
+                            <input type="text" name="model" onChange={handleChange} value={form.model}/>
                         </p>
                         <p className="block">
                             <label>Descripcion</label>
-                            <textarea  name="descripcion" onChange={handleChange} ></textarea>
+                            <textarea name="descripcion" onChange={handleChange}></textarea>
                         </p>
                         <p>
                             <label>Precio</label>
-                            <input type="number" name="price"  onChange={handleChange} value={form.price}/>
+                            <input type="number" name="price" onChange={handleChange} value={form.price}/>
                         </p>
                         <p>
                             <label>Cantidad</label>
-                            <input type="number" name="stock"  onChange={handleChange} value={form.stock}/>
+                            <input type="number" name="stock" onChange={handleChange} value={form.stock}/>
                         </p>
                         <p>
                             <label>Tamaño</label>
-                            <input type="number" name="size"  onChange={handleChange} value={form.size}/>
+                            <input type="number" name="size" onChange={handleChange} value={form.size}/>
                         </p>
                         <p>
                             <label>Color</label>
-                            <input type="text" name="color"  onChange={handleChange} value={form.color}/>
+                            <input type="text" name="color" onChange={handleChange} value={form.color}/>
                         </p>
                         <p className="block">
                             <label>Imagen</label>
@@ -97,5 +76,6 @@ const CrudProducts = () =>{
 
         </>
     )
+  }
 }
 export default CrudProducts;
