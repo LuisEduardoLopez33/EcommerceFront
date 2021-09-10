@@ -1,19 +1,54 @@
-
 import React from "react";
-
-
-
+import css from "../assets/stylesheet/CrudProduct.css"
+import Header from "../components/Header";
+import Footer from "../components/Footer";
+import update from "immutability-helper";
+import APIInvoker from "../utils/APIInvoker";
 
 class CrudProducts extends React.Component{
 
     constructor(props) {
         super(props);
+        this.state = {
+            name:"",
+            model:"",
+            brand_id: "",
+            category_id: "",
+            description:"",
+            price:"",
+            stock:"",
+            size:"",
+            color:"",
+            img:""
+        }
     }
+
+    handleChange (e){
+        let field = e.target.name
+        let value = e.target.value
+        let type = e.target.type
+
+        this.setState({
+            color : e.target.value
+        })
+
+        if (type === 'radio'){
+            this.setState(update(this.state, {
+                 description : {$set : value}
+            }))
+        }else {
+            this.setState(update(this.state, {
+                [field] : {$set : value}
+            }))
+        }
+    }
+
 
 
 render () {
     return (
         <>
+            <Header/>
             <div className="content">
                 <div className="row justify-content-between">
                     <div className="col-4">
@@ -33,49 +68,97 @@ render () {
                 </div>
 
                 <div className="container-form">
-                    <form onSubmit={handleSubmit}>
+                    <form >
                         <p className="block">
                             <label>Nombre</label>
-                            <input type="text" name="name" onChange={handleChange} value={form.name}/>
+                            <input type="text" name="name" onChange={this.handleChange.bind(this)} value={this.state.name}/>
                         </p>
                         <p>
                             <label>Modelo</label>
-                            <input type="text" name="model" onChange={handleChange} value={form.model}/>
+                            <input type="text" name="model" onChange={this.handleChange.bind(this)} value={this.state.model}/>
                         </p>
                         <p className="block">
                             <label>Descripcion</label>
-                            <textarea name="descripcion" onChange={handleChange}></textarea>
+                            <textarea name="descripcion" onChange={this.handleChange.bind(this)} id="description"></textarea>
                         </p>
                         <p>
                             <label>Precio</label>
-                            <input type="number" name="price" onChange={handleChange} value={form.price}/>
+                            <input type="number" name="price" onChange={this.handleChange.bind(this)} value={this.state.price}/>
                         </p>
                         <p>
                             <label>Cantidad</label>
-                            <input type="number" name="stock" onChange={handleChange} value={form.stock}/>
+                            <input type="number" name="stock" onChange={this.handleChange.bind(this)} value={this.state.stock}/>
                         </p>
                         <p>
                             <label>Tamaño</label>
-                            <input type="number" name="size" onChange={handleChange} value={form.size}/>
+                            <input type="number" name="size" onChange={this.handleChange.bind(this)} value={this.state.size}/>
                         </p>
                         <p>
                             <label>Color</label>
-                            <input type="text" name="color" onChange={handleChange} value={form.color}/>
+                            <input type="text" name="color" onChange={this.handleChange.bind(this)} value={this.state.color}/>
+                        </p>
+                        <p>
+                            <label>ID Compañia</label>
+                            <input type="text" name="brand_id" onChange={this.handleChange.bind(this)} value={this.state.brand_id}/>
+                        </p>
+                        <p>
+                            <label>ID Categoria</label>
+                            <input type="text" name="category_id" onChange={this.handleChange.bind(this)} value={this.state.category_id}/>
                         </p>
                         <p className="block">
                             <label>Imagen</label>
-                            <input type="file" name="img" size="60" onChange={handleChange}/>
+                            <input type="file" name="img" size="60" onChange={this.handleChange.bind(this)} value={this.state.img}/>
                         </p>
                     </form>
                 </div>
 
                 <div className="container-button">
-                    <button type="submit" className="btn btn-primary float-end">Guardar y publicar</button>
+                    <button type="submit" className="btn btn-primary float-end" onClick={this.save.bind(this)}>Guardar y publicar</button>
                 </div>
             </div>
-
+            <br/>
+            <Footer/>
         </>
     )
   }
+
+  save(){
+
+        let product = {
+            name: this.state.name,
+            model: this.state.model,
+            brand_id: this.state.brand_id,
+            category_id: this.state.category_id,
+            description: document.getElementById("description").value,
+            price: this.state.price,
+            stock: this.state.stock,
+            size: this.state.size,
+            color: this.state.color
+        }
+
+        APIInvoker.invokePOST('/product/add', product, data => {
+            alert(JSON.stringify(data))
+            let idProduct = data.id;
+            this.saveimage(idProduct);
+        }, error => {
+            alert(JSON.stringify(error))
+        })
+
+  }
+
+  saveimage(idProduct){
+
+      let images = {
+          product_id: idProduct,
+          image: this.state.img
+      }
+      console.log(images)
+      APIInvoker.invokePOST('/image/insert', images, data =>{
+          alert(JSON.stringify(data))
+      }, error =>{
+          alert(JSON.stringify(error))
+      })
+  }
 }
+
 export default CrudProducts;
