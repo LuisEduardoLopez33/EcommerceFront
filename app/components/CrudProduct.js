@@ -10,16 +10,16 @@ class CrudProducts extends React.Component{
     constructor(props) {
         super(props);
         this.state = {
-            name:"",
-            model:"",
+            name: "",
+            model: "",
             brand_id: "",
             category_id: "",
-            description:"",
-            price:"",
-            stock:"",
-            size:"",
-            color:"",
-            img:""
+            description: "",
+            price: "",
+            stock: "",
+            size: "",
+            color: "",
+            img: ''
         }
     }
 
@@ -43,6 +43,13 @@ class CrudProducts extends React.Component{
         }
     }
 
+    handleOnFileChange (e) {
+        let field = e.target.name
+        let file = e.target.files[0];
+        this.setState(update(this.state, {
+            [field] : {$set : file}
+        }))
+    }
 
 
 render () {
@@ -107,7 +114,7 @@ render () {
                         </p>
                         <p className="block">
                             <label>Imagen</label>
-                            <input type="file" name="img" size="60" onChange={this.handleChange.bind(this)} value={this.state.img}/>
+                            <input type="file" name="img" size="60" onChange={this.handleOnFileChange.bind(this)} />
                         </p>
                     </form>
                 </div>
@@ -147,16 +154,17 @@ render () {
   }
 
   saveimage(idProduct){
-
+      const formdata = new FormData()
+      formdata.append('image', this.state.img)
+      formdata.append('product_id',idProduct)
       let images = {
-          product_id: idProduct,
-          image: this.state.img
+          formdata
       }
       console.log(images)
-      APIInvoker.invokePOST('/image/insert', images, data =>{
-          alert(JSON.stringify(data))
-      }, error =>{
-          alert(JSON.stringify(error))
+
+      fetch('http://localhost:3000/image/insert', {
+          method: 'POST',
+          body: formdata
       })
   }
 }
