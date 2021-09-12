@@ -48,6 +48,9 @@
 #buttons-align{
     display: inline-block;
     margin-right: 10px;
+    width: 150px;
+    height: 40px;
+    text-align: center;
 }
 #CardProductSize{
     width: 450px;

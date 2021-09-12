@@ -1,0 +1,60 @@
+.sizeInfoB{
+    height: 70px;
+}
+.pBlock{
+    display: inline-block;
+
+}
+.pBlock2{
+    display: inline-block;
+    margin-left: 160px;
+}
+.inputBlockM{
+    margin-left: 20px;
+}
+.inputSizeBuy{
+    width: 395px;
+}
+.marginContainer{
+    margin-left: 150px;
+}
+.blockAmount{
+    display: inline-block;
+
+}
+.blockAmount2{
+    display: inline-block;
+    margin-left: 160px;
+
+}
+.blockAmount3{
+    display: inline-block;
+    margin-left: 270px;
+
+}
+.blockCheck{
+    display: inline-block;
+    margin-left: 310px;
+
+}
+.blockPrice{
+    display: inline-block;
+    margin-left: 295px;
+
+}
+
+.blockTittles{
+    display: inline-block;
+
+}
+.blockTittles2{
+    display: inline-block;
+    margin-left: 250px;
+}
+.blockButtonsBuy{
+    display: inline-block;
+}
+.blockButtonsBuy2{
+    display: inline-block;
+    margin-left: 100px;
+}

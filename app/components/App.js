@@ -11,6 +11,7 @@ import Search from "./Search";
 import APIInvoker from "../utils/APIInvoker";
 import Card from "./cardProductBeta";
 import Address from "../pages/Address";
+import Buy from "../pages/Buy";
 class App extends React.Component{
     render() {
         return(
@@ -26,6 +27,7 @@ class App extends React.Component{
                     <Route exact path='/CrudProduct' component={CrudProduct}/>
                     <Route exact path='/Search' component={Search}/>
                     <Route exact path='/Address' component={Address}/>
+                    <Route exact path='/Buy' component={Buy}/>
                 </Switch>
             </BrowserRouter>
         )

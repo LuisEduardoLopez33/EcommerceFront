@@ -77,7 +77,7 @@ class Footer extends React.Component{
                 <hr/>
                 <section className="d-flex justify-content-center justify-content-lg-between p-4 border-bottom ">
                     <div className="me-5 d-none d-lg-block">
-                        <h6 className="footer">Todos los derechos reservados 2020 ©</h6>
+                        <h6 className="footer">Todos los derechos reservados 2021 ©</h6>
                     </div>
 
                     <div>
