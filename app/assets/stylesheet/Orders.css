@@ -1,0 +1,51 @@
+#sizeCardOrders{
+    width: 900px;
+    height: auto;
+}
+#textOrders{
+    margin-left: 0px;
+}
+#tittleTexOrders{
+    display: inline-block;
+    margin-left: 60px;
+}
+#tittleTexOrders1{
+    display: inline-block;
+
+}
+.imgOrders{
+    width: 100px;
+    height: 90px;
+    display: inline-block;
+}
+.priceOrders{
+    display: inline-block;
+    margin-left: 65px;
+}
+.priceOrders2{
+    display: inline-block;
+}
+.inlineNameProduct{
+   display: inline-block;
+    margin-left: 15px;
+}
+#CanLine{
+    display: inline-block;
+    margin-left: 65px;
+    width: 80px;
+    height: 30px;
+}
+
+#buttonRast{
+    margin-left: 40px;
+
+}
+.xp{
+    display: inline-block;
+    margin-left: 15px;
+}
+.statusInline{
+    display: inline-block;
+    margin-left: 10px;
+    text-overflow: clip;
+}
