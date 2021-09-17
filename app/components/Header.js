@@ -1,34 +1,55 @@
-import React from 'react'
-
-import personaIcono from '../assets/icons/person_black_24dp.svg'
-import carritoIcono from '../assets/icons/shopping_cart_black_24dp.svg'
-import {Link} from "react-router-dom";
-
-import update from 'immutability-helper';
+import React from 'react';
+import personaIcono from '../assets/icons/person_black_24dp.svg';
+import carritoIcono from '../assets/icons/shopping_cart_black_24dp.svg';
 import APIInvoker from "../utils/APIInvoker";
+import {Link, Redirect } from "react-router-dom";
 
 class Header extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            search: '',
-            Products: []
+            producto: [],
+            tablaProductos:[],
+            busqueda:''
         }
+        this.status=false;
+    }
+
+    peticionGet= ()=>{
         APIInvoker.invokeGET('/product/getProducts', data => {  //Entrará acá cuando status = true
             this.setState({
-                Products: data.data
+                producto: data.data,
+                tablaProductos: data.data
             })
         }, error => { //Entrará acá cuando status = false
         })
     }
-    changeField(e){
-        let field = e.target.name
-        let value = e.target.value
 
-        this.setState(update(this.state, {
-            [field] : {$set : value}
-        }))
-        
+    handleChange=e=>{
+        this.setState({
+            busqueda: e.target.value
+        })
+        this.peticionGet();
+    }
+
+    EjecutateConchatumadre=()=>{
+        this.filtrar(this.state.busqueda);
+
+    }
+
+    filtrar(noBusqueda) {
+        let resultadosBusqueda = this.state.tablaProductos.filter((elemento) => {
+            if (elemento.name.toString().toLowerCase().includes(noBusqueda.toLowerCase())
+                || (elemento.brand.toString().toLowerCase().includes(noBusqueda.toLowerCase())
+                )) {
+                return elemento;
+            }
+        })
+        this.setState({
+            producto:resultadosBusqueda
+        })
+        this.status=true;
+
     }
 
 render(){
@@ -53,18 +74,10 @@ render(){
                                             <input className="" type="search" placeholder="Search" aria-label="Search"
                                                    name="search"
                                                    id="search"
-                                                   value={this.state.search}
-                                                   onChange={this.changeField.bind(this)}/>
-                                            <Link to={{
-                                                pathname:'/Search',
-                                                state: {product: this.state.search,
-                                                listP: this.state.Products}
-                                                } }>
-                                                <button className="btn btn-primary">
-                                                    enviar
-                                                </button>
-                                            </Link>
-
+                                                   value={this.state.busqueda}
+                                                   onChange={this.handleChange}
+                                            />
+                                            <button className="btn btn-dark" type="submit" onClick={this.EjecutateConchatumadre.bind(this)}>Buscar</button>
                                         </form>
                                         <li className="nav-item dropdown">
                                             <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
@@ -103,6 +116,20 @@ render(){
 
                 </div>
             </nav>
+            <div>
+                {
+                    this.status &&
+                    <Redirect
+                    to={{
+                    pathname: "/Search",
+                        state:{
+                        listas:this.state.producto
+                        }
+
+                }}
+                    />
+                }
+            </div>
         </header>
     )
 }

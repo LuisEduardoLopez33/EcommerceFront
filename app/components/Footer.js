@@ -7,7 +7,7 @@ class Footer extends React.Component{
     render() {
         return(
 
-            <footer className="text-center text-lg-start bg-light text-muted bg-dark text-white">
+            <footer className=" text-center text-lg-start bg-light text-muted bg-dark text-white">
                 <br/>
                 <section className="">
                     <div className="container text-center text-md-start mt-5">
