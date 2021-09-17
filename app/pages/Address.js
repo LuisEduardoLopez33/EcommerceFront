@@ -1,7 +1,9 @@
 import React from "react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import css from "../assets/stylesheet/Orders.css"
 import update from "immutability-helper";
+import {Link} from "react-router-dom";
 
 class Address extends React.Component{
     constructor(props) {
@@ -40,10 +42,12 @@ class Address extends React.Component{
                     <div className="row">
                         <div className="col-lg-2">
                             <div>
-                                <p>Mi cuenta</p>
-                                <p>Mis pedidos</p>
-                                <p>Mis direcciones</p>
-                                <p>Información de la cuenta</p>
+                                <Link className="dropdown-item" to='/Orders'>
+                                    <p>Mis pedidos</p>
+                                </Link>
+                                <Link className="dropdown-item" to='/Orders'>
+                                    <h6>Mis direcciones</h6>
+                                </Link>
                             </div>
                         </div>
                         <div className="col-lg-7">
