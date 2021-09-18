@@ -35,9 +35,6 @@ class SingUp extends React.Component{
         if (this.state.last_name.length === 0) {
             estado = false;
         }
-        if (this.state.phone.length === 0) {
-            estado = false;
-        }
         if (this.state.mail.length === 0) {
             estado = false;
         }
