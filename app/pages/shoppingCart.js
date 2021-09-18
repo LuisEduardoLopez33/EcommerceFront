@@ -14,7 +14,7 @@ class shoppingCart extends React.Component{
         }
         this.status = false
         //extraer el catalogo de productos de la base de datos
-        APIInvoker.invokeGET(`/cart/getCartByCusID/${1}`,data => {  //Entrará acá cuando status = true
+        APIInvoker.invokeGET(`/cart/getCartByCusID/${ window.localStorage.getItem('idCustomer')}`,data => {  //Entrará acá cuando status = true
             this.setState({
                 Cart : data.data
             })
@@ -63,6 +63,16 @@ class shoppingCart extends React.Component{
                                 <p className="text-light">vaciar carrito </p>
                             </button>
                         </div>
+                        <div>
+                            <button type="button" className="btn btn-dark" >
+                                <Link className="dropdown-item" to={{
+                                    pathname:'/Buy',
+                                    state: {CustomerId:  window.localStorage.getItem('idCustomer')}
+                                } } >
+                                <p className="text-light">Comprar carrito</p>
+                                </Link>
+                            </button>
+                        </div>
                     </div>
                 <div>
                     <Footer/>
@@ -73,7 +83,7 @@ class shoppingCart extends React.Component{
     }
 
 deleteAllCart(e){
-    let idCustomer = 1;
+    let idCustomer =  window.localStorage.getItem('idCustomer');
     APIInvoker.invokeGET(`/cart/delByCustomerID/${idCustomer}`, data => {
 
     }, error => {

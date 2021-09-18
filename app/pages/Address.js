@@ -4,13 +4,14 @@ import Footer from "../components/Footer";
 import css from "../assets/stylesheet/Orders.css"
 import update from "immutability-helper";
 import {Link} from "react-router-dom";
+import APIInvoker from "../utils/APIInvoker";
+import Card from "../components/cardProductBeta";
 
 class Address extends React.Component{
     constructor(props) {
         super(props);
      this.state= {
          calle: '',
-         estado:'',
          colonia:'',
          city_id:0,
          reference:'',
@@ -19,8 +20,11 @@ class Address extends React.Component{
          out_num:0,
          name:'',
          last_name:'',
-         phone:''
+         phone:'',
+         city:[]
      }
+     this.status = false
+
 
     }
     changeField(e){
@@ -29,7 +33,21 @@ class Address extends React.Component{
 
         this.setState(update(this.state, {
             [field] : {$set : value}
+
         }))
+    }
+
+    SetCitys(e){
+
+        APIInvoker.invokeGET(`/address/getJoinStateCity/${e.target.value}`,data => {  //Entrará acá cuando status = true
+            this.setState(update(this.state, {
+                city : {$set : data.data}
+
+            }))
+        }, error => { //Entrará acá cuando status = false
+
+        })
+
     }
 
     render() {
@@ -52,7 +70,7 @@ class Address extends React.Component{
                         </div>
                         <div className="col-lg-7">
                             <div className="border border-1">
-                                <h4>Mi cuenta, ¡Hola!, Usuario</h4>
+                                <h4>Mi cuenta, ¡Hola!, { window.localStorage.getItem('nameCustomer')}</h4>
                                 <p>Informacion de mis direcciones</p>
                             </div>
                             <br/>
@@ -97,12 +115,12 @@ class Address extends React.Component{
                                             <p className="fw-bold">Número Exterior</p>
                                                 <input className="input" type="text"
                                                 name="out_num"
-                                                value={this.state.out_num}
+
                                                 onChange={this.changeField.bind(this)}/>
                                             <p className="fw-bold">Número Interior</p>
                                                 <input className="input" type="text"
                                                 name="int_num"
-                                                value={this.state.int_num}
+
                                                 onChange={this.changeField.bind(this)}/>
                                             <p className="fw-bold">Colonia</p>
                                                 <input className="input" type="text"
@@ -115,7 +133,7 @@ class Address extends React.Component{
                                                 value={this.state.reference}
                                                 onChange={this.changeField.bind(this)}/>
                                             <p className="fw-bold">Estado</p>
-                                            <select name="estado" onChange={this.changeField.bind(this)}>
+                                            <select name="estado" onChange={this.SetCitys.bind(this)}>
                                                 <option value="no">Seleccione uno...</option>
                                                 <option value="Aguascalientes">Aguascalientes</option>
                                                 <option value="Baja California">Baja California</option>
@@ -151,7 +169,12 @@ class Address extends React.Component{
                                                 <option value="Zacatecas">Zacatecas</option>
                                             </select>
                                             <p className="fw-bold">Ciudad</p>
-                                            <input className="input" type="text"/>
+                                            <select name="city_id" onChange={this.changeField.bind(this)}>
+                                                <option value="no">Seleccione uno...</option>
+                                                <For each="item" index="index" of={this.state.city} >
+                                                    <option value={item.id_City}>{item.name_City} </option>
+                                                </For>
+                                            </select>
                                         </div>
                                     </div>
                                 </div>
@@ -174,19 +197,22 @@ class Address extends React.Component{
     }
     setAddress(e){
         let address= {
-            calle: this.state.calle,
-            estado:this.state.estado,
-            colonia:this.state.colonia,
-            city_id:0,
+            description:"Col: "+ this.state.colonia+ "calle: "+this.state.calle,
+            city_id:this.state.city_id,
             reference:this.state.reference,
             post_code:this.state.post_code,
-            int_num:0,
-            out_num:0,
+            int_num:this.state.int_num,
+            out_num:this.state.out_num,
+            customer_id: window.localStorage.getItem('idCustomer'),
             name:this.state.name,
             last_name:this.state.last_name,
             phone:this.state.phone
         }
-        alert(JSON.stringify(address))
+        APIInvoker.invokePOST('/address/insertAddress',address, data => {
+            window.alert("se guardó la dirección")
+        }, error => {
+            alert(JSON.stringify(error))
+        })
 
     }
 }

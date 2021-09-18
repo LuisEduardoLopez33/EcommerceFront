@@ -13,6 +13,7 @@ class Header extends React.Component {
             busqueda:''
         }
         this.status=false;
+        this.validate= false;
     }
 
     peticionGet= ()=>{
@@ -51,6 +52,15 @@ class Header extends React.Component {
         this.status=true;
 
     }
+    validLogIn(){
+        if(window.localStorage.getItem('nameCustomer')){
+            this.validate = true
+        }
+    }
+
+    componentDidMount() {
+        this.validLogIn()
+    }
 
 render(){
     return(
@@ -84,20 +94,29 @@ render(){
                                                data-bs-toggle="dropdown" aria-expanded="false">
                                                 <img src={personaIcono}  alt="" width="30" height="24"/>
                                             </a>
-                                            <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                                                <li> <Link className="dropdown-item" to='/Login'>
-                                                    <h6>Login</h6>
-                                                </Link>
-                                                </li>
-                                                <li><Link className="dropdown-item" to='/Signup'>
-                                                    <h6>Signup</h6>
-                                                </Link>
-                                                </li>
-                                                <li><Link className="dropdown-item" to='/Address'>
-                                                    <h6>Mis direcciones</h6>
-                                                </Link>
-                                                </li>
-                                            </ul>
+                                            {
+                                                ! this.validate &&
+                                                <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
+                                                    <li><Link className="dropdown-item" to='/Login'>
+                                                        <h6>Login</h6>
+                                                    </Link>
+                                                    </li>
+                                                    <li><Link className="dropdown-item" to='/Signup'>
+                                                        <h6>Signup</h6>
+                                                    </Link>
+                                                    </li>
+                                                </ul>
+                                            }
+
+                                            {
+                                                this.validate &&
+                                                <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
+                                                    <li><Link className="dropdown-item" to='/Address'>
+                                                        <h6>Mi Cuenta</h6>
+                                                    </Link>
+                                                    </li>
+                                                </ul>
+                                            }
                                         </li>
                                         <li className="nav-item">
                                             <Link className="dropdown-item" to ='/ShoppingCart'>
@@ -108,6 +127,9 @@ render(){
                                             </a>
                                             </Link>
                                         </li>
+                                        <div>
+                                            <h5>¡Hola!, { window.localStorage.getItem('nameCustomer')}</h5>
+                                        </div>
                                     </ul>
                                 </div>
                             </div>

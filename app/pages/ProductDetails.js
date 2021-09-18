@@ -21,7 +21,8 @@ class productDetails extends React.Component{
             Product:{},
             productReview:[],
             title:'',
-            comment:''
+            comment:'',
+            amount:0
         }
 
         this.status = false
@@ -84,7 +85,7 @@ class productDetails extends React.Component{
                             <div className="border border-1">
                                 <h6><img src={box} width="40" height="20"/>Envio Gratis</h6>
                                 <hr/>
-                                <h6><img src={hours} width="30" height="20"/> Servicio 25/7</h6>
+                                <h6><img src={hours} width="30" height="20"/> Servicio 24/7</h6>
                                 <hr/>
                                 <h6><img src={sale} width="40" height="20"/>  Oferta</h6>
                                 <hr/>
@@ -109,18 +110,14 @@ class productDetails extends React.Component{
                             <br/>
                             <div className="btn-group">
                                 <button type="button" className="btn btn-outline-dark ">Cantidad</button>
-                                <button type="button" className="btn btn-outline-dark   dropdown-toggle dropdown-toggle-split"
-                                        data-bs-toggle="dropdown" aria-expanded="false">
-                                    <span className="visually-hidden">Toggle Dropdown</span>
-                                </button>
-                                <ul className="dropdown-menu">
-                                    <li><a className="dropdown-item" href="#">1</a></li>
-                                    <li><a className="dropdown-item" href="#">2</a></li>
-                                    <li><a className="dropdown-item" href="#">3</a></li>
-                                    <li><a className="dropdown-item" href="#">4</a></li>
-                                    <li><a className="dropdown-item" href="#">5</a></li>
-                                    <li><a className="dropdown-item" href="#">6</a></li>
-                                </ul>
+                                <select name="amount" className="btn btn-outline-dark" onChange={this.changeField.bind(this)}>
+                                    <option value={1}>1</option>
+                                    <option value={2}>2</option>
+                                    <option value={3}>3</option>
+                                    <option value={4}>4</option>
+                                    <option value={5}>5</option>
+                                    <option value={6}>6</option>
+                                </select>
                             </div>
                             <br/>
                             <br/>
@@ -185,7 +182,7 @@ class productDetails extends React.Component{
     addShoppingCart(e){
         let cart={
             product_id:this.props.location.state.id,
-            customer_id: 1,
+            customer_id: window.localStorage.getItem('idCustomer'),
             amount:1,
             subtotal:this.state.Product.price
         }
