@@ -63,7 +63,7 @@ class Address extends React.Component{
                                 <Link className="dropdown-item" to='/Orders'>
                                     <p>Mis pedidos</p>
                                 </Link>
-                                <Link className="dropdown-item" to='/Orders'>
+                                <Link className="dropdown-item" to='/Address'>
                                     <h6>Mis direcciones</h6>
                                 </Link>
                             </div>

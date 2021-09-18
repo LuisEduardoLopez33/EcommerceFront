@@ -1,7 +1,7 @@
 import React from 'react'
 import Header from "../components/Header";
 import Footer from "../components/Footer";
-import Card from '../components/Cart'
+import CardNumShop from '../components/CardNunShop'
 import {Link} from "react-router-dom";
 import APIInvoker from "../utils/APIInvoker";
 
@@ -24,60 +24,60 @@ class shoppingCart extends React.Component{
     render(){
         return(
             <div>
-               <div>
-                   <Header/>
-               </div>
-                    <br/>
-                    <div>
-                        <div className=" bg-light">
-                            <div className="container ">
-                                <div className="row">
-                                    <div className="col">
-                                        CARRITO DE COMPRAS
-                                    </div>
-                                    <div className="col">
+               <Header/>
+                <br/>
+                    <div className=" bg-light">
+                        <div className="container ">
+                            <div className="row">
+                                <div className="col">
+                                    CARRITO DE COMPRAS
+                                </div>
+                                <div className="col">
 
-                                    </div>
-                                    <div className="col">
-                                        <Link className="dropdown-item" to='/'>Regresar</Link>
-                                    </div>
+                                </div>
+                                <div className="col">
+                                    <Link className="dropdown-item" to='/'>Regresar</Link>
+                                </div>
+                                </div>
+                            </div>
+                        <div className="container">
+                            <div className="row">
+                                <div className="col-lg-1"></div>
+                                <div className="col-lg-11">
+                                 <For each="item" index="index" of={this.state.Cart} >
+                                    <CardNumShop key={index} id ={item.id} productId={item.product_id}  amount={item.amount} subtotal={item.subtotal} />
+                                 </For>
                                 </div>
                             </div>
                         </div>
                         <div className="container">
                             <div className="row">
-                                <div className="col">
-                                    <div className="row">
-                                        <For each="item" index="index" of={this.state.Cart} >
-                                            <div className="col-lg-10">
-                                                <Card key={index} id ={item.id} productId={item.product_id}  amount={item.amount} subtotal={item.subtotal} />
-                                            </div>
-                                        </For>
+                                <div className="col-lg-2">
+                                    <button type="button" className="btn btn-dark" onClick={this.deleteAllCart.bind(this)}>
+                                        vaciar carrito
+                                    </button>
+                                </div>
+                                <div className="col-lg-8">
 
-                                    </div>
+                                </div>
+                                <div className="col-lg-2">
+                                  <Link className="dropdown-item" to={{
+                                        pathname:'/Buy',
+                                        state: {CustomerId:  window.localStorage.getItem('idCustomer')}
+                                    } } >
+                                    <button type="button" className="btn btn-dark" >
+                                           Comprar carrito
+                                    </button>
+                                  </Link>
                                 </div>
                             </div>
                         </div>
-                        <div>
-                            <button type="button" className="btn btn-dark" onClick={this.deleteAllCart.bind(this)}>
-                                <p className="text-light">vaciar carrito </p>
-                            </button>
-                        </div>
-                        <div>
-                            <button type="button" className="btn btn-dark" >
-                                <Link className="dropdown-item" to={{
-                                    pathname:'/Buy',
-                                    state: {CustomerId:  window.localStorage.getItem('idCustomer')}
-                                } } >
-                                <p className="text-light">Comprar carrito</p>
-                                </Link>
-                            </button>
-                        </div>
                     </div>
-                <div>
-                    <Footer/>
-                </div>
-
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <Footer/>
             </div>
         )
     }
