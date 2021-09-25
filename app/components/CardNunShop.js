@@ -31,13 +31,13 @@ class CardNunShop extends React.Component{
                         <h6 className="card-title" id="tittleTexShop">Total</h6>
                         <hr/>
                         <img src={"http://localhost:3000/"+this.props.productId+'-ecommerce.png'} className="imgShop"/>
-                        <p className="inlineNameProductShop">{this.state.ProductDetails.brand + "-"+this.state.ProductDetails.name + "-"+this.state.ProductDetails.model}</p>
+                        <p className="inlineNameProductShop">{this.state.ProductDetails.name + " "+this.state.ProductDetails.model}</p>
                         <p className="priceShop">$</p>
                         <p className="priceShop2">{this.state.ProductDetails.price}</p>
                         <input className="input text-center" type="number" placeholder={this.props.amount}  id="CanLineShop"/>
                         <button type="button" className="btn btn-dark" id="buttonDeleteShop" onClick={this.deleteCart.bind(this)}>Eliminar</button>
 
-                        <p className="TotalPrice text-wrap">${this.state.ProductDetails.price}</p>
+                        <p className="TotalPrice text-wrap">${this.props.subtotal}</p>
                         <hr/>
                     </div>
                 </div>

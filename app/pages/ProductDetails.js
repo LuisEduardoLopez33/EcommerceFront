@@ -22,7 +22,7 @@ class productDetails extends React.Component{
             productReview:[],
             title:'',
             comment:'',
-            amount:0
+            amount:1
         }
 
         this.status = false
@@ -98,7 +98,7 @@ class productDetails extends React.Component{
                             <Card id={this.props.location.state.id} />
                         </div>
                         <div className="col-lg-4">
-                            <h6 className="fw-bold text-black">{this.state.Product.brand + "-"+this.state.Product.name + "-"+this.state.Product.model}</h6>
+                            <h6 className="fw-bold text-black">{this.state.Product.brand + " "+this.state.Product.name + " "+this.state.Product.model}</h6>
                             <p>${this.state.Product.price}</p>
                             <div id="circulo-dark"></div>
                             <div id="circulo-grey"></div>
@@ -183,8 +183,8 @@ class productDetails extends React.Component{
         let cart={
             product_id:this.props.location.state.id,
             customer_id: window.localStorage.getItem('idCustomer'),
-            amount:1,
-            subtotal:this.state.Product.price
+            amount:this.state.amount,
+            subtotal:this.state.Product.price * this.state.amount
         }
         APIInvoker.invokePOST('/cart/addCart',cart, data => {
             alert(JSON.stringify(data))

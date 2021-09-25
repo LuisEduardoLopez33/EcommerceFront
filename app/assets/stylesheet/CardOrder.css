@@ -1,0 +1,51 @@
+#sizeCardShop{
+    width: 600px;
+    height: auto;
+}
+#textShop{
+    margin-left: 0px;
+}
+#tittleTexShop{
+    display: inline-block;
+    margin-left: 60px;
+}
+#tittleTexShop1{
+    display: inline-block;
+
+}
+.imgShop{
+    width: 100px;
+    height: 90px;
+    display: inline-block;
+}
+.priceShop{
+    display: inline-block;
+    margin-left: 45px;
+}
+.priceShop2{
+    display: inline-block;
+}
+.inlineNameProductShop{
+    display: inline-block;
+    margin-left: 15px;
+}
+#CanLineShop{
+    display: inline-block;
+    margin-left: 65px;
+    width: 50px;
+    height: 30px;
+}
+
+#buttonDeleteShop{
+    margin-left: 60px;
+
+}
+.xp{
+    display: inline-block;
+    margin-left: 15px;
+}
+.TotalPrice{
+    display: inline-block;
+    margin-left: 50px;
+    text-overflow: clip;
+}

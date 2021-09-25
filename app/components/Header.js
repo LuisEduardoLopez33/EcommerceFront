@@ -13,7 +13,11 @@ class Header extends React.Component {
             busqueda:''
         }
         this.status=false;
-        this.validate= false;
+        if(window.localStorage.getItem('token')!= null){
+            this.validate = true
+        }else{
+            this.validate= false;
+        }
     }
 
     peticionGet= ()=>{
@@ -53,14 +57,12 @@ class Header extends React.Component {
 
     }
     validLogIn(){
-        if(window.localStorage.getItem('nameCustomer')){
+
+        if(window.localStorage.getItem('token')!= null){
             this.validate = true
         }
     }
 
-    componentDidMount() {
-        this.validLogIn()
-    }
 
 render(){
     return(

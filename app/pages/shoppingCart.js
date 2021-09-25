@@ -2,7 +2,7 @@ import React from 'react'
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import CardNumShop from '../components/CardNunShop'
-import {Link} from "react-router-dom";
+import {Link, Redirect} from "react-router-dom";
 import APIInvoker from "../utils/APIInvoker";
 
 class shoppingCart extends React.Component{
@@ -12,7 +12,7 @@ class shoppingCart extends React.Component{
         this.state ={
             Cart: []
         }
-        this.status = false
+        this.status = false;
         //extraer el catalogo de productos de la base de datos
         APIInvoker.invokeGET(`/cart/getCartByCusID/${ window.localStorage.getItem('idCustomer')}`,data => {  //Entrará acá cuando status = true
             this.setState({
@@ -20,7 +20,12 @@ class shoppingCart extends React.Component{
             })
         }, error => { //Entrará acá cuando status = false
         })
+
     }
+
+
+
+
     render(){
         return(
             <div>
@@ -61,14 +66,15 @@ class shoppingCart extends React.Component{
 
                                 </div>
                                 <div className="col-lg-2">
-                                  <Link className="dropdown-item" to={{
+                                    <Link className="dropdown-item" to={{
                                         pathname:'/Buy',
-                                        state: {CustomerId:  window.localStorage.getItem('idCustomer')}
+                                        state:{cart:this.state.Cart}
+
                                     } } >
-                                    <button type="button" className="btn btn-dark" >
+                                    <button type="submit" className="btn btn-dark" >
                                            Comprar carrito
                                     </button>
-                                  </Link>
+                                    </Link>
                                 </div>
                             </div>
                         </div>
@@ -78,9 +84,11 @@ class shoppingCart extends React.Component{
                 <br/>
                 <br/>
                 <Footer/>
+
             </div>
         )
     }
+
 
 deleteAllCart(e){
     let idCustomer =  window.localStorage.getItem('idCustomer');
