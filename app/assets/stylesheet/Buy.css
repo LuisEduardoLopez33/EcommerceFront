@@ -29,7 +29,7 @@
 }
 .blockAmount3{
     display: inline-block;
-    margin-left: 270px;
+    margin-left: 230px;
 
 }
 .blockCheck{
@@ -39,7 +39,7 @@
 }
 .blockPrice{
     display: inline-block;
-    margin-left: 295px;
+    margin-left: 285px;
 
 }
 
@@ -53,8 +53,13 @@
 }
 .blockButtonsBuy{
     display: inline-block;
+    width: 190px;
 }
 .blockButtonsBuy2{
-    display: inline-block;
-    margin-left: 100px;
+
+    margin-left: 50px;
+    width: 150px;
+}
+.cardBuy{
+    width: 20px;
 }

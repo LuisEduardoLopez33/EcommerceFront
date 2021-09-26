@@ -10,6 +10,7 @@ import APIInvoker from "../utils/APIInvoker";
 import CardOrderProduct from "../components/CardOrderProduct";
 import CardNumShop from "../components/CardNunShop";
 import update from "immutability-helper";
+import CardAddress from "../components/CardAddress";
 
 class Buy extends React.Component{
     constructor(props) {
@@ -102,7 +103,7 @@ class Buy extends React.Component{
                 <br/>
                 <div className="container">
                     <div className="row">
-                        <div className="col-lg-3">
+                        <div className="col-lg-2">
                             <div>
                                 <h6>Nueva dirección</h6>
                                 <p>Información de contacto</p>
@@ -125,7 +126,7 @@ class Buy extends React.Component{
                                        onChange={this.changeField.bind(this)}/>
                             </div>
                         </div>
-                        <div className="col-lg-3">
+                        <div className="col-lg-2">
                             <p>Informacion de mi dirección</p>
                             <div>
                                 <p className="fw-bold">Código Postal</p>
@@ -203,7 +204,7 @@ class Buy extends React.Component{
                                 </select>
                             </div>
                         </div>
-                        <div className="col-lg-6">
+                        <div className="col-lg-5 border-start border-secondary">
                             <h5>Información de pago</h5>
                             <div className="bg-light">
                                 <div className="container">
@@ -213,11 +214,13 @@ class Buy extends React.Component{
                                             <h5 className="blockTittles">Producto</h5>
                                             <h5 className="blockTittles2">Total</h5>
                                             <hr/>
-                                            <For each="item" index="index" of={this.state.Cart} >
-                                                <CardOrderProduct key={index} id ={item.id} productId={item.product_id}  amount={item.amount} subtotal={item.subtotal}/>
-                                            </For>
-                                            <hr/>
+                                            <div className="cardBuy">
+                                                <For each="item" index="index" of={this.state.Cart} >
+                                                    <CardOrderProduct key={index} id ={item.id} productId={item.product_id}  amount={item.amount} subtotal={item.subtotal}  />
+                                                </For>
+                                            </div>
                                             <br/>
+                                            <hr/>
                                             <h6 className="blockAmount">Monto Total:</h6>
                                             <h6 className="blockAmount3">$</h6>
                                             <h6 className="blockAmount">{this.cartTotal()}</h6>
@@ -226,12 +229,12 @@ class Buy extends React.Component{
                                             <div className="form-check blockCheck">
                                                 <input className="form-check-input" type="radio" name="flexRadioDefault"
                                                        id="flexRadioDefault1"/>
-                                                <h6>Envio por paqueteria</h6>
+                                                <h6 >Envio por paqueteria</h6>
                                             </div>
                                             <div className="form-check blockCheck">
                                                 <input className="form-check-input" type="radio" name="flexRadioDefault"
-                                                       id="flexRadioDefault2" checked/>
-                                                <h6>Entrega en tienda sucursal</h6>
+                                                       id="flexRadioDefault2"/>
+                                                <h6 >Entrega en tienda sucursal</h6>
                                             </div>
                                             <hr/>
                                             <br/>
@@ -240,19 +243,19 @@ class Buy extends React.Component{
                                             <h6 className="blockAmount">0.00</h6>
                                             <br/>
                                             <div className="form-check">
-                                                <input className="form-check-input" type="radio" name="flexRadioDefault"
+                                                <input className="form-check-input" type="radio" name="flexRadioDefault2"
                                                        id="flexRadioDefault1"/>
-                                                <h6>Tarjeta de crédito/debito</h6><img src={creditCard}/>
+                                                <h6 className="form-check-label" >Tarjeta de crédito/debito</h6><img src={creditCard}/>
                                             </div>
                                             <div className="form-check">
-                                                <input className="form-check-input" type="radio" name="flexRadioDefault"
-                                                       id="flexRadioDefault2" checked/>
-                                                <h6>Mercado Pago</h6><img src={MercadoPago} width="80px" height="30"/>
+                                                <input className="form-check-input" type="radio" name="flexRadioDefault2"
+                                                       id="flexRadioDefault2" />
+                                                <h6 className="form-check-label">Mercado Pago</h6><img src={MercadoPago} width="80px" height="30"/>
                                             </div>
                                             <div className="form-check">
-                                                <input className="form-check-input" type="radio" name="flexRadioDefault"
-                                                       id="flexRadioDefault3" checked/>
-                                                <h6>Paypal</h6><img src={Paypal} width="80px" height="20"/>
+                                                <input className="form-check-input" type="radio" name="flexRadioDefault2"
+                                                       id="flexRadioDefault3" />
+                                                <h6 className="form-check-label" >Paypal</h6><img src={Paypal} width="80px" height="20"/>
                                             </div>
                                             <br/>
                                             <Link className="" to='/'>
@@ -264,6 +267,12 @@ class Buy extends React.Component{
                                 </div>
 
                             </div>
+                        </div>
+                        <div className="col-lg-3 border-start border-secondary">
+                            <h5>Direcciones</h5>
+                            <CardAddress/>
+                            <CardAddress/>
+                            <CardAddress/>
                         </div>
                     </div>
                 </div>

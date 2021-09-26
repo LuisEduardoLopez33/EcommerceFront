@@ -1,5 +1,5 @@
 import React from "react";
-import css from "../assets/stylesheet/CardNumShop.css"
+import css from "../assets/stylesheet/CardOrderProduct.css"
 import APIInvoker from "../utils/APIInvoker";
 
 class CardOrderProduct extends React.Component{
@@ -21,7 +21,7 @@ class CardOrderProduct extends React.Component{
     render() {
         return (
             <div className="container">
-                <div className="card border-0" id="sizeCardShop">
+                <div className="card border-0" id="cardBuySize">
                     <div className="card-body">
                         <p className="inlineNameProductShop">{this.state.ProductDetails.name + " "+this.state.ProductDetails.model}</p>
                         <p className="TotalPrice text-wrap">${this.props.subtotal}</p>
