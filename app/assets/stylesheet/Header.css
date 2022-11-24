@@ -3,3 +3,16 @@
     height: 50px;
     border-radius: 5px;
 }
+.usertext{
+    border-top: 4vmax;
+    text-align: center;
+}
+#search2{
+width: 80%;
+}
+#search3{
+    width: 100%;
+    }
+.navbar-brand{
+    margin: 0.5ch;
+}

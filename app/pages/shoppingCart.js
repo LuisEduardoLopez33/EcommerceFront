@@ -12,12 +12,13 @@ class shoppingCart extends React.Component{
         this.state ={
             Cart: []
         }
-        this.status = false;
+
         //extraer el catalogo de productos de la base de datos
         APIInvoker.invokeGET(`/cart/getCartByCusID/${ window.localStorage.getItem('idCustomer')}`,data => {  //Entrará acá cuando status = true
             this.setState({
                 Cart : data.data
             })
+
         }, error => { //Entrará acá cuando status = false
         })
 
@@ -52,29 +53,45 @@ class shoppingCart extends React.Component{
                                  <For each="item" index="index" of={this.state.Cart} >
                                     <CardNumShop key={index} id ={item.id} productId={item.product_id}  amount={item.amount} subtotal={item.subtotal} />
                                  </For>
+                                    {
+                                        ! this.state.Cart.length != 0 &&
+                                             <div>
+                                                <h1>No hay productos en el carrito</h1>
+                                             </div>
+
+                                    }
                                 </div>
                             </div>
                         </div>
                         <div className="container">
                             <div className="row">
                                 <div className="col-lg-2">
-                                    <button type="button" className="btn btn-dark" onClick={this.deleteAllCart.bind(this)}>
+                                    {
+                                        this.state.Cart.length!= 0 &&
+                                        <button type="button" className="btn btn-dark" onClick={this.deleteAllCart.bind(this)}>
                                         vaciar carrito
-                                    </button>
+                                         </button>
+                                    }
+                                    
+
                                 </div>
                                 <div className="col-lg-8">
 
                                 </div>
                                 <div className="col-lg-2">
-                                    <Link className="dropdown-item" to={{
-                                        pathname:'/Buy',
-                                        state:{cart:this.state.Cart}
+                                    {
 
-                                    } } >
-                                    <button type="submit" className="btn btn-dark" >
-                                           Comprar carrito
-                                    </button>
-                                    </Link>
+                                      this.state.Cart.length!= 0 &&
+                                        <Link className="dropdown-item" to={{
+                                            pathname: '/Buy',
+                                            state: {cart: this.state.Cart}
+
+                                        }}>
+                                            <button type="submit" className="btn btn-dark">
+                                                Comprar carrito
+                                            </button>
+                                        </Link>
+                                    }
                                 </div>
                             </div>
                         </div>

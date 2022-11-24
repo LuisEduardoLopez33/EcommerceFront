@@ -23,12 +23,30 @@ class CardNunShop extends React.Component{
             <div className="container">
                 <div className="card border-0" id="sizeCardShop">
                     <div className="card-body">
-                        <h6 className="card-title" id="tittleTexShop1">Imagen</h6>
-                        <h6 className="card-title" id="tittleTexShop">Nombre del producto</h6>
-                        <h6 className="card-title" id="tittleTexShop">Precio</h6>
-                        <h6 className="card-title" id="tittleTexShop">Cantidad</h6>
-                        <h6 className="card-title" id="tittleTexShop">Eiminar</h6>
-                        <h6 className="card-title" id="tittleTexShop">Total</h6>
+                        <div className="continer">
+                            <div className="row">
+                                <div className="col-md-2 p-2">
+                                    <h6 className="card-title" id="tittleTexShop1">Imagen</h6>
+                                </div>
+                                <div className="col-md-2 p-2">
+                                    <h6 className="card-title" id="tittleTexShop">Nombre</h6>
+                                </div>
+                                <div className="col-md-2 p-2">
+                                    <h6 className="card-title" id="tittleTexShop">Precio</h6>
+                                </div>
+                                <div className="col-md-2 p-2">
+                                    <h6 className="card-title" id="tittleTexShop">Cantidad</h6>
+                                </div>
+                                <div className="col-md-2 p-2">
+                                    <h6 className="card-title" id="tittleTexShop">Eiminar</h6>
+                                </div>
+                                <div className="col-md-2 p-2">
+                                <h6 className="card-title" id="tittleTexShop">Total</h6>
+                                </div>
+                            </div>
+                        </div>
+                                           
+                        
                         <hr/>
                         <img src={"http://localhost:3000/"+this.props.productId+'-ecommerce.png'} className="imgShop"/>
                         <p className="inlineNameProductShop">{this.state.ProductDetails.name + " "+this.state.ProductDetails.model}</p>

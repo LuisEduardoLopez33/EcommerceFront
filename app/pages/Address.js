@@ -6,7 +6,7 @@ import update from "immutability-helper";
 import {Link} from "react-router-dom";
 import APIInvoker from "../utils/APIInvoker";
 import Card from "../components/cardProductBeta";
-
+import CardAddress from "../components/CardAddress";
 class Address extends React.Component{
     constructor(props) {
         super(props);
@@ -21,10 +21,19 @@ class Address extends React.Component{
          name:'',
          last_name:'',
          phone:'',
-         city:[]
+         city:[],
+         address:[],
+         naddress:0
      }
      this.status = false
+     APIInvoker.invokeGET(`/address/getAddressPerCustomerById/${window.localStorage.getItem('idCustomer')}`,data => {  //Entrará acá cuando status = true
+        this.setState(update(this.state, {
+            address: {$set : data.data}
 
+        }))
+    }, error => { //Entrará acá cuando status = false
+
+    })
 
     }
     changeField(e){
@@ -184,7 +193,11 @@ class Address extends React.Component{
                         </div>
                         <div className="col-lg-3 border-start border-secondary">
                             <p>Otras direcciones registradas</p>
-
+                            <For each="item" index="index" of={this.state.address} >
+                                <label  onClick={(e) =>this.setCard(item.id_ad)}>
+                                    <CardAddress key={index} id ={item.id_ad} postcode={item.post_code}  description={item.description} cant={index+1}/>
+                                </label>
+                            </For>
                         </div>
                     </div>
                 </div>
@@ -197,7 +210,7 @@ class Address extends React.Component{
     }
     setAddress(e){
         let address= {
-            description:"Col: "+ this.state.colonia+ "calle: "+this.state.calle,
+            description:"Col: "+ this.state.colonia+ " calle: "+this.state.calle,
             city_id:this.state.city_id,
             reference:this.state.reference,
             post_code:this.state.post_code,
@@ -214,6 +227,13 @@ class Address extends React.Component{
             alert(JSON.stringify(error))
         })
 
+    }
+    setCard(e){
+        let value = e
+
+        this.setState(update(this.state, {
+            naddress : {$set : value}
+        }))
     }
 }
 

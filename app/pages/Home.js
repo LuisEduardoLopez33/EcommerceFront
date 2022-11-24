@@ -49,7 +49,7 @@ class Home extends React.Component{
                         <div className="col">
                             <h2>Ofertas Exclusivas</h2>
                             <p>Aqui van alguna descripcion de las ofertas</p>
-                            <button type="button" className="btn btn-dark">Ver mas</button>
+                            <button className="btn btn-dark">Ver mas</button>
                         </div>
                         <div className="col-lg-8">
                             <div id="carouselExampleIndicators" className="carousel slide" data-bs-ride="carousel">

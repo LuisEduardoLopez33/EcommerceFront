@@ -1,12 +1,13 @@
 import React from 'react';
 import personaIcono from '../assets/icons/person_black_24dp.svg';
 import carritoIcono from '../assets/icons/shopping_cart_black_24dp.svg';
+import css from '../assets/stylesheet/Header.css';
 import APIInvoker from "../utils/APIInvoker";
 import {Link, Redirect } from "react-router-dom";
 
 class Header extends React.Component {
-    constructor(props) {
-        super(props);
+    constructor() {
+        super();
         this.state = {
             producto: [],
             tablaProductos:[],
@@ -69,32 +70,47 @@ render(){
         <header id="main-header">
             <nav className="navbar navbar-expand-lg navbar-light bg-light" id="ul" >
                 <div className="container-fluid">
-                    <div className="container">
+                    <div className='container'>
                         <div className="row">
-                            <div className="col-lg-5">
-                                <Link className="dropdown-item" to='/'>Ecommerce</Link>
+                            <div className="col-lg-2">
+                                <Link className='nav-link'aria-current="page" to='/'>
+                                    <a className="navbar-brand">Ecommerce</a>
+                                </Link>
                             </div>
-                            <div className="col-lg-7">
-                                <button className="navbar-toggler" type="button" data-bs-toggle="collapse"
+                            <div className='col-lg-6'>
+                                {/* <ul className="navbar-nav" >  */}
+                                <form className="d-flex " id='d-flexlarge'>
+                                    <input className="" type="search" placeholder="Buscar" aria-label="Search"
+                                            name="search"
+                                            id="search2"
+                                            value={this.state.busqueda}
+                                            onChange={this.handleChange}
+                                    />
+                                    <button className="btn btn-dark" type="submit" onClick={this.EjecutateConchatumadre.bind(this)}>Buscar</button>
+                                </form>
+                                {/* </ul> */}
+                            </div>
+                            <div className="col-lg-3">
+                                {/* <button className="navbar-toggler" type="button" data-bs-toggle="collapse"
                                         data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                                        aria-expanded="false" aria-label="Toggle navigation">
+                                        aria-expanded="true" aria-label="Toggle navigation">
                                     <span className="navbar-toggler-icon"></span>
-                                </button>
+                                </button> */}
                                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                                    <ul className="navbar-nav me-auto mb-2 mb-lg-0" >
-                                        <form className="d-flex ">
-                                            <input className="" type="search" placeholder="Search" aria-label="Search"
-                                                   name="search"
-                                                   id="search"
-                                                   value={this.state.busqueda}
-                                                   onChange={this.handleChange}
+                                    <ul className="navbar-nav me-auto mb-2 mb-lg-4" > 
+                                        {/* <form className="d-flex ">
+                                            <input className="buscador" type="search" placeholder="Buscar" aria-label="Search"
+                                                    name="search"
+                                                    id="search"
+                                                    value={this.state.busqueda}
+                                                    onChange={this.handleChange}
                                             />
                                             <button className="btn btn-dark" type="submit" onClick={this.EjecutateConchatumadre.bind(this)}>Buscar</button>
-                                        </form>
+                                        </form> */}
                                         <li className="nav-item dropdown">
                                             <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                                               data-bs-toggle="dropdown" aria-expanded="false">
-                                                <img src={personaIcono}  alt="" width="30" height="24"/>
+                                                data-bs-toggle="dropdown" aria-expanded="false">
+                                                <img src={personaIcono}  alt="" width="35" height="29"/>
                                             </a>
                                             {
                                                 ! this.validate &&
@@ -121,23 +137,22 @@ render(){
                                             }
                                         </li>
                                         <li className="nav-item">
-                                            <Link className="dropdown-item" to ='/ShoppingCart'>
+                                            <Link  to ='/ShoppingCart'>
                                             <a className="nav-link disabled" href="#" tabIndex="-1"
-                                               aria-disabled="true">
+                                                aria-disabled="true">
 
-                                                <img src={carritoIcono}  alt="" width="30" height="24"/>
+                                                <img src={carritoIcono}  alt="" width="35" height="24"/>
                                             </a>
                                             </Link>
                                         </li>
-                                        <div>
-                                            <h5>¡Hola!, { window.localStorage.getItem('nameCustomer')}</h5>
-                                        </div>
+                                        <h5 className="navbar-brand">¡Hola!, { window.localStorage.getItem('nameCustomer')}</h5>
                                     </ul>
+                                    
                                 </div>
                             </div>
+                        
                         </div>
                     </div>
-
                 </div>
             </nav>
             <div>
